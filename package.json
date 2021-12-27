@@ -1,7 +1,6 @@
 {
   "name": "soully_world_ui",
   "version": "0.1.0",
-  "homepage": "/soully_world_ui/",
   "private": true,
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",

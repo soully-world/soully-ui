@@ -1,5 +1,5 @@
 import { ChainId } from "config/constants/tokens";
-export const preLink = "/soully_world_ui";
+export const preLink = "";
 
 export const LinkArr = [
   {
