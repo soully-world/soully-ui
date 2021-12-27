@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useWeb3React } from '@web3-react/core';
-import { BigNumber as BigNumberType } from '@ethersproject/bignumber';
-import { formatUnits } from '@ethersproject/units';
+import { useState, useEffect } from "react";
+import { useWeb3React } from "@web3-react/core";
+import { BigNumber as BigNumberType } from "@ethersproject/bignumber";
+import { formatUnits } from "@ethersproject/units";
 
 export function useBalance() {
   const { account, library, chainId } = useWeb3React();

@@ -18,15 +18,17 @@ const ThemeProviderWrapper = (props) => {
 const listen = () => {
   if (document.readyState === "complete") {
     ReactDOM.render(
-      <ThemeProviderWrapper>
-        <Providers>
-          <BrowserRouter>
-            <ResetCSS />
-            <GlobalStyle />
-            <App />
-          </BrowserRouter>
-        </Providers>
-      </ThemeProviderWrapper>,
+      <React.StrictMode>
+        <ThemeProviderWrapper>
+          <Providers>
+            <BrowserRouter>
+              <ResetCSS />
+              <GlobalStyle />
+              <App />
+            </BrowserRouter>
+          </Providers>
+        </ThemeProviderWrapper>
+      </React.StrictMode>,
       document.getElementById("root"),
     );
   } else {

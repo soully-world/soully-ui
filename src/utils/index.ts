@@ -2,11 +2,8 @@ import { Contract } from "@ethersproject/contracts";
 import { AddressZero } from "@ethersproject/constants";
 import { getAddress } from "@ethersproject/address";
 import { JsonRpcSigner, Web3Provider } from "@ethersproject/providers";
-import { BASE_BSC_SCAN_URLS } from "../config";
-export declare enum ChainId {
-  MAINNET = 56,
-  TESTNET = 97,
-}
+import { SCAN_URLS } from "../config";
+import { ChainId } from "config/constants/tokens";
 export function isAddress(value: any): string | false {
   try {
     return getAddress(value);
@@ -17,23 +14,23 @@ export function isAddress(value: any): string | false {
 export function getBscScanLink(
   data: string | number,
   type: "transaction" | "token" | "address" | "block" | "countdown",
-  chainId: ChainId = ChainId.MAINNET,
+  chainId: ChainId,
 ): string {
   switch (type) {
     case "transaction": {
-      return `${BASE_BSC_SCAN_URLS[chainId]}/tx/${data}`;
+      return `${SCAN_URLS[chainId]}/tx/${data}`;
     }
     case "token": {
-      return `${BASE_BSC_SCAN_URLS[chainId]}/token/${data}`;
+      return `${SCAN_URLS[chainId]}/token/${data}`;
     }
     case "block": {
-      return `${BASE_BSC_SCAN_URLS[chainId]}/block/${data}`;
+      return `${SCAN_URLS[chainId]}/block/${data}`;
     }
     case "countdown": {
-      return `${BASE_BSC_SCAN_URLS[chainId]}/block/countdown/${data}`;
+      return `${SCAN_URLS[chainId]}/block/countdown/${data}`;
     }
     default: {
-      return `${BASE_BSC_SCAN_URLS[chainId]}/address/${data}`;
+      return `${SCAN_URLS[chainId]}/address/${data}`;
     }
   }
 }

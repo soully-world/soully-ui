@@ -1,5 +1,12 @@
 import { ChainId } from "config/constants/tokens";
 export const preLink = "";
+export enum CONTRACT_STATE {
+  paused,
+  preSale,
+  live,
+  finish,
+}
+export const MAX_Soully = 10000;
 
 export const LinkArr = [
   {

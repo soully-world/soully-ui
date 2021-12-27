@@ -7,7 +7,6 @@ import { getContract } from "../utils";
 
 export function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
   const { library, account } = useWeb3React();
-
   return useMemo(() => {
     if (!address || !ABI || !library) return null;
     try {

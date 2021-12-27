@@ -10,8 +10,8 @@ import Trade from "./components/Trade";
 const Homepage = (): JSX.Element => {
   return (
     <>
-      {/* <Trade /> */}
-      <Banner />
+      <Trade />
+      {/* <Banner />
       <WagmiSoullyBanner />
       <About />
       <TheRarity />
@@ -19,7 +19,7 @@ const Homepage = (): JSX.Element => {
       <CommunityDrivenRoadmap />
       <FAQ />
       <MeetOurTeam />
-      <WagmiSoullyBanner />
+      <WagmiSoullyBanner /> */}
     </>
   );
 };
