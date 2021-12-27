@@ -6,7 +6,7 @@ export const baseColors = {
   primaryBright: "#53DEE9",
   primaryDark: "#0098A1",
   secondary: "#7645D9",
-  success: "#31D0AA",
+  success: "#113e33",
   warning: "#FFB237",
 };
 
@@ -54,8 +54,8 @@ export const darkColors: Colors = {
   secondary: "#FF0000",
   background: "#000",
   backgroundDisabled: "#3c3742",
-  backgroundAlt: "#000",
-  backgroundAlt2: "rgba(0, 0, 0, 0.7)",
+  backgroundAlt: "#111",
+  backgroundAlt2: "#333",
   cardBorder: "#383241",
   contrast: "#FFFFFF",
   dropdown: "#1E1D20",

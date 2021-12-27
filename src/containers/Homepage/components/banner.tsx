@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Flex } from "uikit";
 import { preLink } from "appConfig";
 import {
@@ -10,6 +11,7 @@ import {
   BannerSubTitle,
 } from "./bannerStyle";
 const Banner = () => {
+  const history = useHistory();
   return (
     <BannerWrapDiv preLink={preLink}>
       <BannerInnerDiv>
@@ -23,7 +25,14 @@ const Banner = () => {
           </BannerContextText>
         </Flex>
         <BannerBtn>
-          <Button variant="primary">Mint a Soully</Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              window.location.href = "/get";
+            }}
+          >
+            Mint a Soully
+          </Button>
           <Button variant="secondary">Join Our Discord</Button>
         </BannerBtn>
       </BannerInnerDiv>

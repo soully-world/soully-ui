@@ -8,6 +8,7 @@ import { PageLoading } from "components/PageLoading";
 import reportWebVitals from "./reportWebVitals";
 import Providers from "./Providers";
 import { ThemeProvider } from "styled-components";
+import { ToastListener } from "./contexts/ToastsContext";
 // css
 import { ResetCSS } from "uikit";
 import GlobalStyle from "style/Global";
@@ -25,6 +26,7 @@ const listen = () => {
               <ResetCSS />
               <GlobalStyle />
               <App />
+              <ToastListener />
             </BrowserRouter>
           </Providers>
         </ThemeProviderWrapper>

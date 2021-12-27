@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Flex } from "uikit";
 import InnerDiv from "./components/InnerDiv";
 import TitleH2 from "./components/TitleH2";
-import ContextText from "./components/ContextText";
+import ContextText from "components/ContextText";
 import { preLink } from "appConfig";
 const TheRarityWrapDiv = styled(InnerDiv)`
   margin-top: 170px;

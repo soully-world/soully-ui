@@ -6,8 +6,8 @@ import { ToastContextApi } from "./types";
 export const ToastsContext = createContext<ToastContextApi>(undefined);
 
 export const ToastsProvider: React.FC = ({ children }) => {
+  console.log(3333);
   const [toasts, setToasts] = useState<ToastContextApi["toasts"]>([]);
-
   const toast = useCallback(
     ({ title, description, type }: Omit<Toast, "id">) => {
       setToasts((prevToasts) => {

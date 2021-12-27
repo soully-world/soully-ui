@@ -12,14 +12,13 @@ interface DescriptionWithTxProps {
 
 const DescriptionWithTx: React.FC<DescriptionWithTxProps> = ({ txHash, children }) => {
   const { chainId } = useActiveWeb3React();
-  const { t } = useTranslation();
-
+  console.log(111);
   return (
     <>
       {typeof children === "string" ? <Text as="p">{children}</Text> : children}
       {txHash && (
-        <Link external href={getBscScanLink(txHash, "transaction", chainId)}>
-          {t("View on BscScan")}: {truncateHash(txHash, 8, 0)}
+        <Link external href={getBscScanLink(txHash, "transaction", chainId)} color="text" style={{ opacity: 0.6 }}>
+          View on Scan: {truncateHash(txHash, 8, 0)}
         </Link>
       )}
     </>

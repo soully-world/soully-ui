@@ -22,63 +22,63 @@ const Trade = () => {
   const [totalCost, setTotalCost] = useState(0);
   const [count, setCount] = useState<number>(1); // 要mint的个数
   const { account } = useWeb3React();
-  const handleUpdateState = () => {
-    contract?.totalSupply().then((total: BN) => {
-      // 总量是多少
-      setTotal(total.toNumber());
-      if (total.gte(MAX_Soully)) {
-        // 总量已被领取完
-        setState(CONTRACT_STATE.finish);
-      }
-    });
-    // 状态
-    contract.saleState().then((state: BN) => {
-      setState(state.toNumber());
-    });
 
-    // 单独取会有问题，所以在回调里
-    contract?.price().then((_price: BN) => {
-      console.log("_price", _price.toString());
-      // 当前nft价格
-      setPrice(Number(formatUnits(_price)));
-    });
+  // const handleUpdateState = () => {
+  //   contract?.totalSupply().then((total: BN) => {
+  //     // 总量是多少
+  //     setTotal(total.toNumber());
+  //     if (total.gte(MAX_Soully)) {
+  //       // 总量已被领取完
+  //       setState(CONTRACT_STATE.finish);
+  //     }
+  //   });
+  //   // 状态
+  //   contract.saleState().then((state: BN) => {
+  //     setState(state.toNumber());
+  //   });
 
-    contract?.vipSaleReserved(account).then((reserved: BN) => {
-      // vip用户能够领取多少个
-      setVipSaleReserved(reserved.toNumber());
-    });
+  //   // 单独取会有问题，所以在回调里
+  //   contract?.price().then((_price: BN) => {
+  //     // 当前nft价格
+  //     setPrice(Number(formatUnits(_price)));
+  //   });
 
-    contract?.maxPurchase().then((_maxPurchase: BN) => {
-      // 非vip单次能够领取个数
-      setMaxPurchase(_maxPurchase.toNumber());
-    });
+  //   contract?.vipSaleReserved(account).then((reserved: BN) => {
+  //     // vip用户能够领取多少个
+  //     setVipSaleReserved(reserved.toNumber());
+  //   });
 
-    contract?.vipSaleReserved(account).then((reserved: BN) => {
-      // vip用户能够领取多少个
-      setVipSaleReserved(reserved.toNumber());
-    });
-  };
-  useEffect(() => {
-    if (contract) {
-      handleUpdateState();
-    }
-  }, [contract]);
-  useEffect(() => {
-    let _cost = 0;
-    let _count = count;
-    if (vipSaleReserved > 0) {
-      _cost += new BigNumber(vipSaleReserved || 0)
-        .times(price || 0)
-        .times(1 / 2)
-        .toNumber();
-      _count -= vipSaleReserved;
-    }
-    _cost = new BigNumber(_count)
-      .times(price || 0)
-      .plus(_cost || 0)
-      .toNumber();
-    setTotalCost(_cost);
-  }, [count, price]);
+  //   contract?.maxPurchase().then((_maxPurchase: BN) => {
+  //     // 非vip单次能够领取个数
+  //     setMaxPurchase(_maxPurchase.toNumber());
+  //   });
+
+  //   contract?.vipSaleReserved(account).then((reserved: BN) => {
+  //     // vip用户能够领取多少个
+  //     setVipSaleReserved(reserved.toNumber());
+  //   });
+  // };
+  // useEffect(() => {
+  //   if (contract) {
+  //     handleUpdateState();
+  //   }
+  // }, [contract]);
+  // useEffect(() => {
+  //   let _cost = 0;
+  //   let _count = count;
+  //   if (vipSaleReserved > 0) {
+  //     _cost += new BigNumber(vipSaleReserved || 0)
+  //       .times(price || 0)
+  //       .times(1 / 2)
+  //       .toNumber();
+  //     _count -= vipSaleReserved;
+  //   }
+  //   _cost = new BigNumber(_count)
+  //     .times(price || 0)
+  //     .plus(_cost || 0)
+  //     .toNumber();
+  //   setTotalCost(_cost);
+  // }, [count, price]);
 
   // mint
   const handleMint = useCallback(() => {
@@ -93,7 +93,7 @@ const Trade = () => {
       });
   }, [totalCost, account]);
 
-  console.log({ balance, vipSaleReserved, state, maxPurchase, total, price, totalCost, count });
+  // console.log({ balance, vipSaleReserved, state, maxPurchase, total, price, totalCost, count });
   return (
     <div>
       222 <div onClick={handleMint}>ssss</div>

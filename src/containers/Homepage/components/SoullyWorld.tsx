@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Flex, Heading } from "uikit";
-import ContextText from "./components/ContextText";
+import ContextText from "components/ContextText";
 import InnerDiv from "./components/InnerDiv";
 import TitleH2 from "./components/TitleH2";
 import Point from "./components/Point";

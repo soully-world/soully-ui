@@ -7,7 +7,6 @@ const useToast = () => {
   if (toastContext === undefined) {
     throw new Error("Toasts context undefined");
   }
-
   return toastContext;
 };
 

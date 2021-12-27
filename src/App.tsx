@@ -10,7 +10,7 @@ import history from "./routerHistory";
 import Layout from "layout/Layout";
 import { preLink } from "appConfig";
 const Homepage = React.lazy(() => import("containers/Homepage"));
-
+const MintPage = React.lazy(() => import("containers/Mintpage"));
 const App = (): JSX.Element => {
   const { connector } = useWeb3React<Web3Provider>();
   const dispatch = useAppDispatch();
@@ -31,8 +31,11 @@ const App = (): JSX.Element => {
       <Layout>
         <Suspense fallback="">
           <Switch>
-            <Route path={preLink + "/"}>
+            <Route exact path={preLink + "/"}>
               <Homepage />
+            </Route>
+            <Route exact path={preLink + "/get"}>
+              <MintPage />
             </Route>
             <Redirect to={preLink + "/"} />
           </Switch>

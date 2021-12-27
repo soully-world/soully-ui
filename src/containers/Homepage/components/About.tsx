@@ -1,6 +1,6 @@
 import React from "react";
 import TitleH2 from "./components/TitleH2";
-import ContextTextStyle from "./components/ContextText";
+import ContextTextStyle from "components/ContextText";
 import styled from "styled-components";
 import { preLink } from "appConfig";
 const AboutWrapDiv = styled.div`
