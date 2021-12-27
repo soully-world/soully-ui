@@ -1,0 +1,25 @@
+{
+  "short_name": "Soully World",
+  "name": "Woully World",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "373*120"
+    },
+    {
+      "src": "logo@2x.png",
+      "type": "image/png",
+      "sizes": "745*240"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#F40638",
+  "background_color": "#ffffff"
+}

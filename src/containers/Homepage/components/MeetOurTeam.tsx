@@ -1,0 +1,132 @@
+import React from "react";
+import styled from "styled-components";
+import TitleH2 from "./components/TitleH2";
+
+import InnerDiv from "./components/InnerDiv";
+import { Text } from "uikit";
+import { preLink } from "appConfig";
+const UlWrap = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: wrap;
+  padding-bottom: 200px;
+`;
+const LiWrap = styled.li`
+  width: 30%;
+  padding: 2px 2px 0;
+  &:nth-child(1) {
+    background: linear-gradient(180deg, #a2471a 0%, rgba(36, 17, 7, 0) 100%);
+  }
+  &:nth-child(2) {
+    background: linear-gradient(180deg, #2d638b 0%, rgba(35, 46, 55, 0) 100%);
+  }
+  &:nth-child(3) {
+    background: linear-gradient(180deg, #345fae 0%, rgba(63, 114, 196, 0) 100%);
+  }
+  &:nth-child(4) {
+    background: linear-gradient(180deg, #a77a23 0%, rgba(78, 52, 17, 0) 100%);
+  }
+  &:nth-child(5) {
+    background: linear-gradient(180deg, #bb7594 0%, rgba(89, 39, 66, 0) 100%);
+  }
+  &:nth-child(6) {
+    background: linear-gradient(180deg, #8d3a80 0%, rgba(33, 14, 28, 0) 100%);
+  }
+  img {
+    width: 100%;
+  }
+  .inner {
+    padding: 40px;
+    background-color: ${({ theme }) => `${theme.colors.background}`};
+  }
+`;
+const TitleH3 = styled.h3`
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 45px;
+  padding: 32px 0 13px;
+`;
+const LiContextText = styled.p`
+  font-size: 18px;
+  line-height: 22px;
+  width: 70%;
+  margin: 0 auto;
+`;
+
+const ContextText = styled(Text)`
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  opacity: 0.5;
+  margin-bottom: 56px;
+`;
+const MeetOurTeamInnerDiv = styled(InnerDiv)`
+  text-align: center;
+`;
+
+const MeetOurTeamArr = [
+  {
+    image: "/1",
+    title: "0xLambert",
+    context: "Freelance artist, Designer, Motocycle fan",
+  },
+  {
+    image: "/2",
+    title: "0xAllen",
+    context: "Painter, Graphic designer, Gambler",
+  },
+  {
+    image: "/3",
+    title: "Typer",
+    context: "Game company master planner, NFT addict",
+  },
+  {
+    image: "/4",
+    title: "Leissner",
+    context: "Blockchain geek, NFT collector",
+  },
+  {
+    image: "/5",
+    title: "Siren",
+    context: "Front-end developer, Mother of two",
+  },
+  {
+    image: "/6",
+    title: "Typer",
+    context: "Community leader, Gaming Junkie, Independt woman",
+  },
+];
+const MeetOurTeam = () => {
+  return (
+    <MeetOurTeamInnerDiv>
+      <TitleH2 position="center">Meet Our Team</TitleH2>
+      <ContextText>
+        Soully World is an NFT project jointly established by digital artist 0xLambert and his team. The founding team
+        consists of six people.
+      </ContextText>
+      <UlWrap>
+        {MeetOurTeamArr.map((v: { image: string; title: string; context: string }, index: number) => {
+          return (
+            <LiWrap key={index}>
+              <div className="inner">
+                <picture>
+                  <source type="image/png" srcSet={`${preLink}/images/meetourteam/${v.image}.png`} />
+                  <source type="image/svg" srcSet={`${preLink}/images/meetourteam/${v.image}.svg`} />
+                  <img src={`${preLink}/images/meetourteam/${v.image}.svg`} />
+                </picture>
+                <TitleH3>{v.title}</TitleH3>
+                <LiContextText>{v.context}</LiContextText>
+              </div>
+            </LiWrap>
+          );
+        })}
+        <LiWrap></LiWrap>
+      </UlWrap>
+    </MeetOurTeamInnerDiv>
+  );
+};
+export default MeetOurTeam;
