@@ -7,21 +7,33 @@ const AboutWrapDiv = styled.div`
   text-align: center;
 `;
 const AboutInnerDiv = styled.div`
-  max-width: 1320px;
+  max-width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    max-width: 1320px;
+    padding: 0;
+  }
 `;
 const PicWrap = styled.div`
-  height: 560px;
+  height: 260px;
   overflow: hidden;
   width: 100%;
-  margin-top: 56px;
+  margin-top: 26px;
   img {
-    height: 564px;
+    height: 264px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    height: 560px;
+    margin-top: 56px;
+    img {
+      height: 564px;
+    }
   }
 `;
 const About = () => {
   return (
-    <AboutWrapDiv>
+    <AboutWrapDiv id="About">
       <AboutInnerDiv>
         <TitleH2 position="center">About</TitleH2>
         <ContextTextStyle>

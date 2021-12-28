@@ -6,47 +6,79 @@ import TitleH2 from "./components/TitleH2";
 import ContextText from "components/ContextText";
 import { preLink } from "appConfig";
 const TheRarityWrapDiv = styled(InnerDiv)`
-  margin-top: 170px;
+  margin-top: 40px;
   border-left: 4px solid ${({ theme }) => `${theme.colors.primaryDark}`};
-  padding-left: 44px;
+  padding-left: 20px;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding-left: 44px;
+    margin-top: 170px;
+  }
 `;
 const TheRarityWrapFlex = styled(Flex)`
   justify-content: space-between;
   align-items: end;
+  flex-wrap: wrap;
 `;
 const TheRarityTitle = styled.h3`
-  padding-top: 50px;
-  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
   font-weight: bold;
-  font-size: 28px;
-  line-height: 35px;
+  font-size: 18px;
+  line-height: 25px;
   color: ${({ theme }) => `${theme.colors.text}`};
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 28px;
+    line-height: 35px;
+  }
 `;
 const Fl = styled.div`
-  width: 600px;
+  width: 100%;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: 600px;
+  }
 `;
 const Fr = styled.div`
-  width: 560px;
-  height: 560px;
+  width: 300px;
+  height: 230px;
+  margin-left: 20px;
+  margin-top: 20px;
   position: relative;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: 560px;
+    height: 560px;
+  }
 `;
 const ImgSize = styled.div`
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 200px;
+  height: 200px;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: 500px;
+    height: 500px;
+  }
 `;
 const Bg01 = styled(ImgSize)`
-  top: 30px;
-  left: 30px;
+  top: 10px;
+  left: 10px;
   z-index: 2;
   background-color: #490917;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    top: 30px;
+    left: 30px;
+  }
 `;
 const Bg02 = styled(ImgSize)`
-  top: 60px;
-  left: 60px;
+  top: 20px;
+  left: 20px;
   z-index: 1;
   opacity: 0.3;
   border: 1px solid #ffffff;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    top: 60px;
+    left: 60px;
+  }
 `;
 const FrPicture = styled(ImgSize)`
   z-index: 3;
@@ -59,7 +91,12 @@ const ListFlex = styled(Flex)`
   justify-content: space-between;
   align-items: end;
   img {
-    width: 150px;
+    width: 80px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    img {
+      width: 150px;
+    }
   }
 `;
 const TheRarityArr = [
@@ -92,7 +129,7 @@ const TheRarity = () => {
   const [showPic, setShowPic] = useState(1);
   const item = TheRarityArr[showPic];
   return (
-    <TheRarityWrapDiv>
+    <TheRarityWrapDiv id="Rarity">
       <TheRarityWrapFlex>
         <Fl>
           <TitleH2 mt="0">The Rarity</TitleH2>

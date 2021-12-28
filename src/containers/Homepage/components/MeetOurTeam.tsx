@@ -70,39 +70,39 @@ const MeetOurTeamInnerDiv = styled(InnerDiv)`
 
 const MeetOurTeamArr = [
   {
-    image: "/1",
+    image: "1",
     title: "0xLambert",
     context: "Freelance artist, Designer, Motocycle fan",
   },
   {
-    image: "/2",
+    image: "2",
     title: "0xAllen",
     context: "Painter, Graphic designer, Gambler",
   },
   {
-    image: "/3",
+    image: "3",
     title: "Typer",
     context: "Game company master planner, NFT addict",
   },
   {
-    image: "/4",
+    image: "4",
     title: "Leissner",
     context: "Blockchain geek, NFT collector",
   },
   {
-    image: "/5",
+    image: "5",
     title: "Siren",
     context: "Front-end developer, Mother of two",
   },
   {
-    image: "/6",
+    image: "6",
     title: "Typer",
     context: "Community leader, Gaming Junkie, Independt woman",
   },
 ];
 const MeetOurTeam = () => {
   return (
-    <MeetOurTeamInnerDiv>
+    <MeetOurTeamInnerDiv id="Team">
       <TitleH2 position="center">Meet Our Team</TitleH2>
       <ContextText>
         Soully World is an NFT project jointly established by digital artist 0xLambert and his team. The founding team

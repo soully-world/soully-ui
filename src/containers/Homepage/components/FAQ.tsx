@@ -57,7 +57,7 @@ const FQAArr = [
 const FAQ = () => {
   const [show, setShow] = useState([]);
   return (
-    <FAQInnerDiv>
+    <FAQInnerDiv id="FAQ">
       <TitleH2 mt="70px" position="center">
         FAQ
       </TitleH2>

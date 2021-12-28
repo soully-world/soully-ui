@@ -12,7 +12,7 @@ const GridLayout = styled(Grid)`
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 24px;
   }
-  ${({ theme }) => theme.mediaQueries.lg} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 32px;
   }

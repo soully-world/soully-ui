@@ -2,45 +2,94 @@ import styled from "styled-components";
 import { Flex, Heading } from "uikit";
 import ContextText from "components/ContextText";
 export const BannerWrapDiv = styled.div<{ preLink: string }>`
-  padding-top: 240px;
   background: url("${({ preLink }) => preLink}/images/banner/bg.png");
   background-repeat: no-repeat;
-  background-size: 2560px 1100px;
+  background-size: 3355px 1440px;
   background-position: center top;
-  padding-bottom: 300px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  ${({ theme }) => theme.mediaQueries.md} {
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding-top: 240px;
+    background-size: 2560px 1100px;
+    padding-bottom: 300px;
+  }
 `;
 export const BannerInnerDiv = styled.div`
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   text-align: center;
+  ${({ theme }) => theme.mediaQueries.md} {
+    max-width: 1200px;
+    padding: 0;
+  }
 `;
 export const BannerTitle = styled(Heading)`
-  padding-bottom: 36px;
-  font-weight: 600;
-  font-size: 160px;
-  line-height: 200px;
+  padding-bottom: 43px;
+  font-size: 88px;
+  line-height: 110px;
+  font-weight: 700;
   color: ${({ theme }) => `${theme.colors.primary}`};
   background: linear-gradient(90deg, ${({ theme }) => `${theme.colors.primary}`}, #ff5ea1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  ${({ theme }) => theme.mediaQueries.xs} {
+    font-size: 50px;
+    line-height: 70px;
+    padding-bottom: 20px;
+  }
+  ${({ theme }) => theme.mediaQueries.sm} {
+    font-size: 68px;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding-bottom: 36px;
+    font-size: 160px;
+    line-height: 200px;
+  }
 `;
 export const BannerSubTitle = styled(Heading)`
-  padding-bottom: 36px;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 80px;
+  padding-bottom: 20px;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 60px;
+
+  ${({ theme }) => theme.mediaQueries.xs} {
+    font-size: 20px;
+    line-height: 30px;
+    padding-bottom: 10px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-weight: 400;
+    padding-bottom: 36px;
+    font-size: 64px;
+    line-height: 80px;
+  }
 `;
 export const BannerContextText = styled(ContextText)`
-  // width: 90%;
+  width: 80%;
   margin: 0 auto;
   padding-bottom: 66px;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: 100%;
+  }
 `;
 export const BannerBtn = styled(Flex)`
   justify-content: space-between;
-  width: 40%;
+  flex-wrap: wrap;
+  width: 80%;
   margin: 0 auto;
   button {
     height: 48px;
-    width: 45%;
+    width: 100%;
+    margin-top: 20px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: 40%;
+    button {
+      width: 45%;
+      margin-top: 0;
+    }
   }
 `;

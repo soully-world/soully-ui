@@ -13,7 +13,7 @@ import {
 const Banner = () => {
   const history = useHistory();
   return (
-    <BannerWrapDiv preLink={preLink}>
+    <BannerWrapDiv preLink={preLink} id="Home">
       <BannerInnerDiv>
         <Flex flex={1} flexDirection="column">
           <BannerTitle>Soully World</BannerTitle>

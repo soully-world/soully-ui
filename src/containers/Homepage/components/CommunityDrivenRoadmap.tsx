@@ -149,7 +149,7 @@ const ContextText = styled(Text)`
 `;
 const CommunityDrivenRoadmap = () => {
   return (
-    <CommunityDrivenRoadmapInnerDiv>
+    <CommunityDrivenRoadmapInnerDiv id="Roadmap">
       <TitleH2 mt="120px" position="right">
         Community-Driven Roadmap
       </TitleH2>

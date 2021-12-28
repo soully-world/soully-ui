@@ -5,6 +5,11 @@ const LogoStyled = styled.a`
   img {
     width: 150px;
   }
+  ${({ theme }) => theme.mediaQueries.xs} {
+    img {
+      width: 130px;
+    }
+  }
 `;
 const Logo = () => {
   return (

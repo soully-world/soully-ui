@@ -4,16 +4,25 @@ import { Flex, Heading } from "uikit";
 
 const WagmiSoullyBannerStyle = styled(Flex)`
   justify-content: space-between;
-  height: 64px;
-  padding: 14px 0;
+  height: 44px;
+  padding: 8px 0;
   overflow: hidden;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    height: 64px;
+    padding: 14px 0;
+  }
 `;
 const TextHeading = styled(Heading)`
-  width: 120px;
+  width: 80px;
   text-align: center;
-  line-height: 36px;
-  font-size: 24px;
+  line-height: 28px;
+  font-size: 16px;
   font-wight: 900px;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    line-height: 36px;
+    width: 120px;
+    font-size: 24px;
+  }
 `;
 const SOULLYHeading = styled(TextHeading)`
   background-color: ${({ theme }) => `${theme.colors.text}`};
