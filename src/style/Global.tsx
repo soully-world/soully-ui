@@ -16,7 +16,18 @@ body {
 ul, li{
   list-style: none;
 }
-
+/* 动画 */
+@-webkit-keyframes process {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 0; }
+}
+@keyframes process {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 0; }
+}
+i, em{
+  font-style: normal;
+}
 ::-webkit-outer-spin-button,
 ::-webkit-inner-spin-button {
   -webkit-appearance: none;

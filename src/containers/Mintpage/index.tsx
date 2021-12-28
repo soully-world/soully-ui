@@ -10,7 +10,7 @@ import { formatUnits, parseEther } from "@ethersproject/units";
 import useToast from "hooks/useToast";
 import { ToastDescriptionWithTx } from "components/Toast";
 import { useBalance } from "hooks/useBalance";
-import { Button, Flex, Heading } from "uikit";
+import { Button } from "uikit";
 
 import {
   MintpageWrapDiv,
@@ -19,6 +19,10 @@ import {
   MintpageInnerDiv,
   MintpageTitle,
   MintpageSubTitle,
+  MintpageContextTitle,
+  MintpageInnerDivFl,
+  MintpageInnerDivFr,
+  CostStyled,
 } from "./Mintpage";
 
 const Mintpage = () => {
@@ -27,15 +31,16 @@ const Mintpage = () => {
   const balance: number = useBalance();
   const [vipSaleReserved, setVipSaleReserved] = useState<number>();
   const [state, setState] = useState<CONTRACT_STATE>(CONTRACT_STATE.paused);
-  const [maxPurchase, setMaxPurchase] = useState<number>();
-  const [total, setTotal] = useState<number>();
-  const [price, setPrice] = useState<number>();
-  const [totalCost, setTotalCost] = useState(0);
+  const [maxPurchase, setMaxPurchase] = useState<number>(20);
+  const [total, setTotal] = useState<number>(0);
+  const [price, setPrice] = useState<number>(0.07);
+  const [totalCost, setTotalCost] = useState(0.07);
   const [count, setCount] = useState<number>(1); // 要mint的个数
   const { account } = useWeb3React();
-
+  const [connect, setConnect] = useState(false);
   const handleUpdateState = useCallback(() => {
     contract?.totalSupply().then((total: BN) => {
+      setConnect(true);
       // 总量是多少
       setTotal(total.toNumber());
       if (total.gte(MAX_Soully)) {
@@ -77,6 +82,10 @@ const Mintpage = () => {
 
   // mint
   const handleMint = useCallback(() => {
+    if (!connect) {
+      toastError("Please change network to Ethereum.");
+      return false;
+    }
     if (!state) {
       toastError("The contract has not yet opened, so stay tuned!");
       return false;
@@ -134,41 +143,40 @@ const Mintpage = () => {
         toastError(err?.data?.message || "Mint Error!");
       });
   }, [totalCost, account]);
-  console.log({ balance, vipSaleReserved, state, maxPurchase, total, price, totalCost, count });
   return (
     <MintpageWrapDiv preLink={preLink}>
       <MintpageInnerDiv>
-        <div>
-          <Heading>Mint IS LIVE</Heading>
-          <Heading>Time to mint your soully today :)</Heading>
-          <Heading>Mint Rules:</Heading>
-          <MintpageContextText> Connect your wallet with MetaMask </MintpageContextText>
-          <MintpageContextText>Select your Mint Quantity </MintpageContextText>
-          <MintpageContextText>Click on the button to mint your Soully! </MintpageContextText>
-          <MintpageContextText>Max 10 per transaction </MintpageContextText>
-          <MintpageContextText>Max 20 per wallet </MintpageContextText>
-          <MintpageContextText>No Bonding Curves </MintpageContextText>
-        </div>
-        <div>
-          MINT PRICE: {price} ETH
+        <MintpageInnerDivFl>
+          <MintpageTitle>Mint IS LIVE</MintpageTitle>
+          <MintpageSubTitle>Time to mint your soully today :)</MintpageSubTitle>
+          <MintpageContextTitle>Mint Rules:</MintpageContextTitle>
+          <MintpageContextText>1. Connect your wallet with MetaMask </MintpageContextText>
+          <MintpageContextText>2. Select your Mint Quantity </MintpageContextText>
+          <MintpageContextText>3. Click on the button to mint your Soully! </MintpageContextText>
+          <MintpageContextText>4. Max 10 per transaction </MintpageContextText>
+          <MintpageContextText>5. Max 20 per wallet </MintpageContextText>
+          <MintpageContextText>6. No Bonding Curves </MintpageContextText>
+        </MintpageInnerDivFl>
+        <MintpageInnerDivFr>
+          <h2>MINT PRICE: {price} ETH </h2>
           <div className="line_bg">
             <i
               style={{
-                width: "40%",
+                width: `${(total / MAX_Soully) * 100}%`,
               }}
             ></i>
           </div>
           <h4>
             {total} of {MAX_Soully} minted
           </h4>
-          <Flex>
+          <CostStyled>
             <h4>TOTAL COST</h4>
             <h3>
               <i>{totalCost} </i>ETH
             </h3>
-          </Flex>
+          </CostStyled>
           <h5>MINT QTY: {count}</h5>
-          <Flex>
+          <MintpageBtn>
             <i
               onClick={() => {
                 if (count > 0) {
@@ -176,9 +184,11 @@ const Mintpage = () => {
                 }
               }}
             >
-              -
+              <em>-</em>
             </i>
-            <Button onClick={handleMint}>Mint</Button>
+            <Button onClick={handleMint}>
+              <em> {!connect ? "CONNECT" : "Mint"}</em>
+            </Button>
             <i
               onClick={() => {
                 if (state === 2) {
@@ -192,10 +202,11 @@ const Mintpage = () => {
                 }
               }}
             >
-              +
+              <em>+</em>
             </i>
-          </Flex>
-        </div>
+          </MintpageBtn>
+          {!connect ? <h6>Please change network to Ethereum. </h6> : null}
+        </MintpageInnerDivFr>
       </MintpageInnerDiv>
     </MintpageWrapDiv>
   );

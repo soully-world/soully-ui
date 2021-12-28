@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex } from "uikit";
 import InnerDiv from "containers/Homepage/components/components/InnerDiv";
 import Logo from "../Header/components/logo";
 import ShareLink from "components/SharaLink";
+import WagmiSoullyBanner from "components/WagmiSoullyBanner";
 const FooterWarp = styled.div`
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 `;
@@ -17,6 +17,7 @@ const FooterInnerDiv = styled(InnerDiv)`
 const FooterWidget = () => {
   return (
     <FooterWarp>
+      <WagmiSoullyBanner />
       <FooterInnerDiv>
         <Logo />
         <ShareLink />

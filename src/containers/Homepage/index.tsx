@@ -5,7 +5,7 @@ import SoullyWorld from "./components/SoullyWorld";
 import CommunityDrivenRoadmap from "./components/CommunityDrivenRoadmap";
 import FAQ from "./components/FAQ";
 import MeetOurTeam from "./components/MeetOurTeam";
-import WagmiSoullyBanner from "./components/components/WagmiSoullyBanner";
+import WagmiSoullyBanner from "components/WagmiSoullyBanner";
 const Homepage = (): JSX.Element => {
   return (
     <>
@@ -17,7 +17,6 @@ const Homepage = (): JSX.Element => {
       <CommunityDrivenRoadmap />
       <FAQ />
       <MeetOurTeam />
-      <WagmiSoullyBanner />
     </>
   );
 };
