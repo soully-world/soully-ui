@@ -9,10 +9,9 @@ export const MintpageWrapDiv = styled.div<{ preLink: string }>`
   background-position: center top;
   padding-bottom: 300px;
 `;
-export const MintpageInnerDiv = styled.div`
+export const MintpageInnerDiv = styled(Flex)`
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
 `;
 export const MintpageTitle = styled(Heading)`
   padding-bottom: 36px;

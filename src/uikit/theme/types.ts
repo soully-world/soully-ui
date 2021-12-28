@@ -1,13 +1,13 @@
 export type Breakpoints = string[];
 
 export type MediaQueries = {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
-  xxl: string;
-  nav: string;
+  xs: string; // 370
+  sm: string; // 576
+  md: string; // 852
+  lg: string; // 968
+  xl: string; // 1080
+  xxl: string; // 1200
+  nav: string; // 968
 };
 
 export type Spacing = number[];
