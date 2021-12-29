@@ -81,7 +81,7 @@ const Mintpage = () => {
   }, [count, price]);
 
   // mint
-  const handleMint = () => {
+  const handleMint = useCallback(() => {
     if (!connect) {
       toastError("Please change network to Ethereum.");
       return false;
@@ -117,7 +117,7 @@ const Mintpage = () => {
       toastError("The contract has not yet opened, so stay tuned!");
       return false;
     }
-  };
+  }, [totalCost, account, balance, count, price, vipSaleReserved, state, connect]);
   const preSaleMint = useCallback(() => {
     contract
       .preSaleMint(count, { from: account, value: parseEther(`${totalCost}`) })
