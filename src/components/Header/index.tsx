@@ -69,7 +69,7 @@ const HeaderWarp = styled.header`
     background-color: rgba(0, 0, 0, 0.9);
   }
   // 370
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.xxl} {
     padding: 0 40px;
     .small,
     .modal {

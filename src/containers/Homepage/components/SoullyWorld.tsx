@@ -6,37 +6,58 @@ import InnerDiv from "./components/InnerDiv";
 import TitleH2 from "./components/TitleH2";
 import Point from "./components/Point";
 import { preLink } from "appConfig";
-const SoullyWorldWrapDiv = styled(InnerDiv)``;
+const SoullyWorldWrapDiv = styled(InnerDiv)`
+  padding: 0 20px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0;
+  }
+`;
 const UlWrap = styled.ul``;
 const TitleH3 = styled(Heading)`
   color: ${({ theme }) => `${theme.colors.primary}`};
-  font-size: 40px;
-  line-height: 50px;
-  padding-bottom: 20px;
+  font-size: 20px;
+  line-height: 30px;
+  padding-bottom: 10px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 40px;
+    line-height: 50px;
+    padding-bottom: 20px;
+  }
 `;
 const SoullyWorldContextText = styled(ContextText)`
-  font-size: 22px;
-  line-height: 30px;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 400;
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 22px;
+    line-height: 30px;
+  }
 `;
 const LiWrap = styled.li<{ mb?: string }>`
   border-left: 4px solid ${({ theme }) => `${theme.colors.primaryDark}`};
-  padding-left: 44px;
-  margin-bottom: ${({ mb }) => mb || "80px"};
+  padding-left: 20px;
+  margin-bottom: ${({ mb }) => mb || "40px"};
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    margin-bottom: ${({ mb }) => mb || "80px"};
+    border-left: 4px solid ${({ theme }) => `${theme.colors.primaryDark}`};
+    padding-left: 44px;
+  }
 `;
 
 const LongImgWrap = styled.div`
   overflow: hidden;
   margin-top: 30px;
-  width: 1224px;
+  width: 98%;
+  img {
+    display: block;
+    width: 101%;
+  }
 `;
 const SmallImgWrap = styled(Flex)`
-  height: 226px;
   overflow: hidden;
   margin-top: 30px;
 `;
 const SmallImgPicture = styled.picture`
-  height: 226px;
   width: 226px;
   overflow: hidden;
   margin-right: 24px;
@@ -53,7 +74,7 @@ const SoullyWorld = () => {
             handmade by 0xlambert and aims to inject more trendy elements and fresh creativity into SpiritSwap's brand
             image.
           </SoullyWorldContextText>
-          <SoullyWorldContextText mt="28px">
+          <SoullyWorldContextText mt={40}>
             They will be sold as an auction on Fantom, and those who acquire any one of the Kriyan-Soully will receive a
             wealth of benefits granted by Soully World.
           </SoullyWorldContextText>
@@ -69,8 +90,8 @@ const SoullyWorld = () => {
           <LongImgWrap>
             <picture>
               <source type="image/svg" srcSet={`${preLink}/images/soullyworld/Kriyan-Soully.svg`} />
-              <source type="image/jpg" srcSet={`${preLink}/images/soullyworld/Kriyan-Soully.jpg`} />
-              <img className="long" src={`${preLink}/images/soullyworld/Kriyan-Soully.jpg`} />
+              <source type="image/jpg" srcSet={`${preLink}/images/soullyworld/Kriyan-Soully.png`} />
+              <img className="long" src={`${preLink}/images/soullyworld/Kriyan-Soully.png`} />
             </picture>
           </LongImgWrap>
         </LiWrap>
@@ -100,7 +121,7 @@ const SoullyWorld = () => {
             Preparing Soully for the next stage of evolution, the V2 stage will meet everyone with cooler physical
             features and clearer resolution.
           </SoullyWorldContextText>
-          <SoullyWorldContextText mt="28px">
+          <SoullyWorldContextText mt={40}>
             V2 will continue the story background and racial classification of V1, and introduce combat mechs for all
             combat troops. The total number of V2 will be decided by the community, and the way to get V2 mainly comes
             from holding V1 and participating in the open whitelist pre-sale.
@@ -121,7 +142,7 @@ const SoullyWorld = () => {
               <img src={`${preLink}/images/soullyworld/Soully World Game.svg`} />
             </picture>
           </LongImgWrap>
-          <SoullyWorldContextText mt="28px">
+          <SoullyWorldContextText mt={40}>
             Well, if and when GameFi is successfully completed, we'll have to find our next target. Although we have
             imagined many kinds of future, there are too many possibilities in the NFT and blockchain world for our team
             alone to decide the future course, so at the end of the V2 release, there will be a DAO organization with

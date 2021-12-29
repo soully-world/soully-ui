@@ -21,7 +21,15 @@ const PicWrap = styled.div`
   width: 100%;
   margin-top: 26px;
   img {
+    width: auto;
     height: 264px;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    height: 400px;
+    margin-top: 30px;
+    img {
+      height: 404px;
+    }
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     height: 560px;

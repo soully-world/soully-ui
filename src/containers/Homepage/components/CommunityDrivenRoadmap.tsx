@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Text } from "uikit";
+import { Text, useMatchBreakpoints } from "uikit";
 import InnerDiv from "./components/InnerDiv";
 import TitleH2 from "./components/TitleH2";
 import Point from "./components/Point";
@@ -16,6 +16,10 @@ const UlWrapText = styled.ul`
   line-height: 38px;
   margin-bottom: 36px;
   padding-right: 5%;
+  display: none;
+  ${({ theme }) => theme.mediaQueries.xl} {
+    display: block;
+  }
 `;
 const LiWrapText = styled.li`
   position: relative;
@@ -54,19 +58,37 @@ const CommunityDrivenRoadmapH4 = styled.h4`
 
   -webkit-writing-mode: vertical-lr;
   -ms-writing-mode: bt-lr;
+  display: none;
+  ${({ theme }) => theme.mediaQueries.xl} {
+    display: block;
+  }
 `;
 const UlWrap = styled.ul`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  border-left: 4px solid #f40638;
   position: relative;
+  padding-left:7%;
+  padding-right: 4%;
+  &:before,
+  &:after {
+    display: none;
+  }
+  ${({ theme }) => theme.mediaQueries.xl} {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-left: 4px solid #f40638;
+    margin-left: 0;
+    padding: 0
+    &:before,
+    &:after {
+      display: block;
+    }
+  }
   &:before {
     content: "";
     position: absolute;
     top: 0;
-    right: -30px;
+    right: -33px;
     width: 60px;
     height: 50%;
     transform: skew(15deg, 0);
@@ -80,7 +102,7 @@ const UlWrap = styled.ul`
     content: "";
     position: absolute;
     bottom: 0;
-    right: -30px;
+    right: -33px;
     width: 60px;
     height: 50%;
     transform: skew(-15deg, 0);
@@ -92,28 +114,41 @@ const UlWrap = styled.ul`
   }
 `;
 const LiWrap = styled.li`
-  border-top: 4px solid #f40638;
-  border-bottom: 4px solid #f40638;
-  height: 380px;
-  padding: 40px 0 40px 24px;
+  padding: 20px 0 20px 14px;
   position: relative;
   flex: 3;
   background: linear-gradient(262.52deg, rgba(244, 6, 56, 0.2) -167.84%, rgba(244, 6, 56, 0.04) 100%);
+  height: auto;
+  margin-top: 20px;
+  margin-left: 30px;
+  border: none;
+  border-left: 4px solid #f40638;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    border-top: 4px solid #f40638;
+    border-bottom: 4px solid #f40638;
+    border-left: none;
+    height: 380px;
+    padding: 40px 0 40px 24px;
+    margin: 0;
+  }
+
   &:nth-child(2) {
     flex: 4;
   }
-  &:last-child {
-    &:before,
-    &:after {
-      content: "";
-      border-left: none;
-      background-color: transparent;
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    &:last-child {
+      &:before,
+      &:after {
+        content: "";
+        border-left: none;
+        background-color: transparent;
+      }
     }
   }
   &:before {
     content: "";
     position: absolute;
-    width: 20px;
+    width: 60px;
     top: 0;
     right: -20px;
     width: 50px;
@@ -121,11 +156,11 @@ const LiWrap = styled.li`
     transform: skew(15deg, 0);
     border-left: 4px solid #f40638;
     background-color: #000;
+    z-index: 2;
   }
   &:after {
     content: "";
     position: absolute;
-    width: 20px;
     bottom: 0;
     right: -20px;
     width: 50px;
@@ -133,25 +168,67 @@ const LiWrap = styled.li`
     transform: skew(-15deg, 0);
     border-left: 4px solid #f40638;
     background-color: #000;
+    z-index: 2;
   }
 `;
 const ContextText = styled(Text)`
   font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 18px;
   width: 100%;
-
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    font-size: 18px;
+    line-height: 22px;
+  }
   p {
     display: inline-block;
     vertical-align: top;
     width: 80%;
   }
 `;
+const Line = styled.i`
+  position: absolute;
+  width: 99%;
+  height: 4px;
+  left: 0;
+  background-color: ${({ theme }) => theme.colors.primary};
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    display: none;
+  }
+`;
+const FristLine = styled(Line)`
+  top: 0;
+`;
+const LastLine = styled(Line)`
+  bottom: 0;
+`;
+const SideH4 = styled.h4`
+  position: absolute;
+  top: 20%;
+  left: -36px;
+  transform: rotate(180deg);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.primary};
+  writing-mode: vertical-rl; //垂直方向，从右向左
+  // writing-mode: vertical-lr; //垂直方向，从左向右
+
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: bt-lr;
+  display: block;
+  ${({ theme }) => theme.mediaQueries.xl} {
+    display: none;
+  }
+`;
 const CommunityDrivenRoadmap = () => {
+  const { isXxl } = useMatchBreakpoints();
+  console.log(isXxl);
   return (
     <CommunityDrivenRoadmapInnerDiv id="Roadmap">
-      <TitleH2 mt="120px" position="right">
-        Community-Driven Roadmap
+      <TitleH2 mt={120} position="right">
+        {isXxl ? "Community-Driven Roadmap" : "Roadmap"}
       </TitleH2>
       <UlWrapText>
         <LiWrapText>
@@ -171,6 +248,8 @@ const CommunityDrivenRoadmap = () => {
       <CommunityDrivenRoadmapH4>SOULLY</CommunityDrivenRoadmapH4>
       <UlWrap>
         <LiWrap>
+          <FristLine />
+          <SideH4>SOULLY</SideH4>
           <ContextText>
             <Point />
             <p>Soully World character creation</p>
@@ -203,8 +282,12 @@ const CommunityDrivenRoadmap = () => {
             <Point />
             <p>Launch of early member incentive program</p>
           </ContextText>
+          <LastLine />
         </LiWrap>
         <LiWrap>
+          <FristLine />
+          <SideH4>SOULLY</SideH4>
+
           <ContextText>
             <Point />
             <p>Giveaway events will be held when the number of mint reaches different stages</p>
@@ -216,7 +299,7 @@ const CommunityDrivenRoadmap = () => {
           <ContextText>
             <Point />
             <p>
-              Story creation incentive program, create story lines for your own Soully and post them on designated
+              Story creation incentive program, create story Frists for your own Soully and post them on designated
               Discord channels to receive rewards
             </p>
           </ContextText>
@@ -228,8 +311,12 @@ const CommunityDrivenRoadmap = () => {
             <Point />
             <p>Soully rarity system is available on the official website to check your Soully rarity in real time</p>
           </ContextText>
+          <LastLine />
         </LiWrap>
         <LiWrap>
+          <FristLine />
+          <SideH4>SOULLY</SideH4>
+
           <ContextText>
             <Point />
             <p>Upload Soully World Mall, get or buy the Soully products you want for free</p>
@@ -250,6 +337,7 @@ const CommunityDrivenRoadmap = () => {
             <Point />
             <p>Release Soully World eco-governance tokens</p>
           </ContextText>
+          <LastLine />
         </LiWrap>
       </UlWrap>
     </CommunityDrivenRoadmapInnerDiv>

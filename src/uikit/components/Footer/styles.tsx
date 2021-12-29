@@ -9,8 +9,7 @@ export const StyledFooter = styled(Flex)`
 
 export const StyledList = styled.ul`
   list-style: none;
-  margin-bottom: 40px;
-
+  padding: 0 20px;
   ${({ theme }) => theme.mediaQueries.md} {
     margin-bottom: 0px;
   }

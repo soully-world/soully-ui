@@ -81,7 +81,7 @@ const Mintpage = () => {
   }, [count, price]);
 
   // mint
-  const handleMint = useCallback(() => {
+  const handleMint = () => {
     if (!connect) {
       toastError("Please change network to Ethereum.");
       return false;
@@ -117,7 +117,7 @@ const Mintpage = () => {
       toastError("The contract has not yet opened, so stay tuned!");
       return false;
     }
-  }, [totalCost, account]);
+  };
   const preSaleMint = useCallback(() => {
     contract
       .preSaleMint(count, { from: account, value: parseEther(`${totalCost}`) })
@@ -149,13 +149,15 @@ const Mintpage = () => {
         <MintpageInnerDivFl>
           <MintpageTitle>Mint IS LIVE</MintpageTitle>
           <MintpageSubTitle>Time to mint your soully today :)</MintpageSubTitle>
-          <MintpageContextTitle>Mint Rules:</MintpageContextTitle>
-          <MintpageContextText>1. Connect your wallet with MetaMask </MintpageContextText>
-          <MintpageContextText>2. Select your Mint Quantity </MintpageContextText>
-          <MintpageContextText>3. Click on the button to mint your Soully! </MintpageContextText>
-          <MintpageContextText>4. Max 10 per transaction </MintpageContextText>
-          <MintpageContextText>5. Max 20 per wallet </MintpageContextText>
-          <MintpageContextText>6. No Bonding Curves </MintpageContextText>
+          <div className="inner-Rule">
+            <MintpageContextTitle>Mint Rules:</MintpageContextTitle>
+            <MintpageContextText>1. Connect your wallet with MetaMask </MintpageContextText>
+            <MintpageContextText>2. Select your Mint Quantity </MintpageContextText>
+            <MintpageContextText>3. Click on the button to mint your Soully! </MintpageContextText>
+            <MintpageContextText>4. Max 10 per transaction </MintpageContextText>
+            <MintpageContextText>5. Max 20 per wallet </MintpageContextText>
+            <MintpageContextText>6. No Bonding Curves </MintpageContextText>
+          </div>
         </MintpageInnerDivFl>
         <MintpageInnerDivFr>
           <h2>MINT PRICE: {price} ETH </h2>
@@ -208,6 +210,15 @@ const Mintpage = () => {
           {!connect ? <h6>Please change network to Ethereum. </h6> : null}
         </MintpageInnerDivFr>
       </MintpageInnerDiv>
+      <div className="wrap-Rule">
+        <MintpageContextTitle>Mint Rules:</MintpageContextTitle>
+        <MintpageContextText>1. Connect your wallet with MetaMask </MintpageContextText>
+        <MintpageContextText>2. Select your Mint Quantity </MintpageContextText>
+        <MintpageContextText>3. Click on the button to mint your Soully! </MintpageContextText>
+        <MintpageContextText>4. Max 10 per transaction </MintpageContextText>
+        <MintpageContextText>5. Max 20 per wallet </MintpageContextText>
+        <MintpageContextText>6. No Bonding Curves </MintpageContextText>
+      </div>
     </MintpageWrapDiv>
   );
 };

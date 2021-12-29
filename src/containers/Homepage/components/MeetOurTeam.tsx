@@ -8,13 +8,25 @@ import { preLink } from "appConfig";
 const UlWrap = styled.ul`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   flex-flow: wrap;
-  padding-bottom: 200px;
+  padding-bottom: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding-right: 0;
+    padding-bottom: 200px;
+  }
 `;
 const LiWrap = styled.li`
-  width: 30%;
+  width: 100%;
   padding: 2px 2px 0;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 45%;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: 30%;
+  }
   &:nth-child(1) {
     background: linear-gradient(180deg, #a2471a 0%, rgba(36, 17, 7, 0) 100%);
   }
@@ -37,32 +49,50 @@ const LiWrap = styled.li`
     width: 100%;
   }
   .inner {
-    padding: 40px;
+    padding: 20px;
+    margin-bottom: 20px;
     background-color: ${({ theme }) => `${theme.colors.background}`};
+    ${({ theme }) => theme.mediaQueries.md} {
+      padding: 40px;
+      margin-bottom: 0;
+    }
   }
 `;
 const TitleH3 = styled.h3`
   font-weight: 700;
-  font-size: 36px;
-  line-height: 45px;
-  padding: 32px 0 13px;
+  font-size: 23px;
+  line-height: 35px;
+  padding: 12px 0 0;
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 36px;
+    line-height: 45px;
+    padding: 32px 0 13px;
+  }
 `;
 const LiContextText = styled.p`
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 18px;
   width: 70%;
   margin: 0 auto;
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 18px;
+    line-height: 22px;
+  }
 `;
 
 const ContextText = styled(Text)`
   font-weight: normal;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 14px;
+  line-height: 20px;
   text-align: center;
   width: 90%;
   margin: 0 auto;
   opacity: 0.5;
   margin-bottom: 56px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 24px;
+    line-height: 30px;
+  }
 `;
 const MeetOurTeamInnerDiv = styled(InnerDiv)`
   text-align: center;
@@ -124,7 +154,6 @@ const MeetOurTeam = () => {
             </LiWrap>
           );
         })}
-        <LiWrap></LiWrap>
       </UlWrap>
     </MeetOurTeamInnerDiv>
   );

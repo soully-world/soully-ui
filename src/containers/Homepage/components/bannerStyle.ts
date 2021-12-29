@@ -8,6 +8,7 @@ export const BannerWrapDiv = styled.div<{ preLink: string }>`
   background-position: center top;
   padding-top: 120px;
   padding-bottom: 120px;
+
   ${({ theme }) => theme.mediaQueries.md} {
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
@@ -44,6 +45,11 @@ export const BannerTitle = styled(Heading)`
   }
   ${({ theme }) => theme.mediaQueries.md} {
     padding-bottom: 36px;
+    font-size: 120px;
+    line-height: 140px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    padding-bottom: 36px;
     font-size: 160px;
     line-height: 200px;
   }
@@ -59,8 +65,13 @@ export const BannerSubTitle = styled(Heading)`
     line-height: 30px;
     padding-bottom: 10px;
   }
-
   ${({ theme }) => theme.mediaQueries.md} {
+    font-weight: 400;
+    padding-bottom: 36px;
+    font-size: 44px;
+    line-height: 80px;
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
     font-weight: 400;
     padding-bottom: 36px;
     font-size: 64px;
@@ -84,6 +95,41 @@ export const BannerBtn = styled(Flex)`
     height: 48px;
     width: 100%;
     margin-top: 20px;
+  }
+  button.primary {
+    padding: 0;
+    position: relative;
+    cursor: pointer;
+    em {
+      position: relative;
+      z-index: 2;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 8px;
+      left: 8px;
+      background-color: #f40638;
+      opacity: 0.5;
+    }
+    em {
+      display: block;
+      width: 100%;
+      height: 48px;
+      line-height: 39px;
+      font-weight: 900;
+      font-size: 24px;
+      border: 3px solid #ffffff;
+    }
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: 60%;
+    button {
+      width: 45%;
+      margin-top: 0;
+    }
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     width: 40%;

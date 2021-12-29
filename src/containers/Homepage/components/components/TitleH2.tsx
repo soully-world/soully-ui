@@ -1,12 +1,16 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Heading } from "uikit";
-const TitleWrapper = styled.div<{ mt: string; position: string }>`
-  padding-top: 40px;
+const TitleWrapper = styled.div<{ mt: number; position: string }>`
+  padding-top: ${({ mt }) => mt / 3 || 170 / 3}px;
   padding-bottom: 30px;
   text-align: ${({ position }) => position || "left"};
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding-top: ${({ mt }) => mt / 1.5 || 170 / 1.5}px;
+    padding-bottom: 40px;
+  }
   ${({ theme }) => theme.mediaQueries.xxl} {
-    padding-top: ${({ mt }) => mt || "170px"};
+    padding-top: ${({ mt }) => mt || "170"}px;
     padding-bottom: 40px;
   }
 `;
@@ -19,6 +23,11 @@ const TitleH2Heading = styled(Heading)`
   strong {
     position: relative;
     z-index: 2;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 50px;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     font-weight: 600;
@@ -44,7 +53,7 @@ const TitleH2 = ({
   position,
 }: {
   children: ReactNode | JSX.Element;
-  mt?: string;
+  mt?: number;
   position?: "right" | "left" | "center" | null | undefined;
 }) => {
   return (

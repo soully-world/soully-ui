@@ -27,11 +27,12 @@ const Banner = () => {
         <BannerBtn>
           <Button
             variant="primary"
+            className="primary"
             onClick={() => {
               window.location.href = "/get";
             }}
           >
-            Mint a Soully
+            <em>Mint a Soully</em>
           </Button>
           <Button variant="secondary">Join Our Discord</Button>
         </BannerBtn>

@@ -3,7 +3,12 @@ import styled from "styled-components";
 import TitleH2 from "./components/TitleH2";
 import InnerDiv from "./components/InnerDiv";
 import { Text } from "uikit";
-const FAQInnerDiv = styled(InnerDiv)``;
+const FAQInnerDiv = styled(InnerDiv)`
+  padding: 0 20px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 0;
+  }
+`;
 const UlWrap = styled.ul``;
 const LiWrap = styled.li`
   padding-bottom: 12px;
@@ -15,7 +20,7 @@ const TitleWrap = styled.div`
   h3 {
     display: inline-block;
     vertical-align: top;
-    width: 90%;
+    width: 80%;
     font-weight: 700;
     font-size: 20px;
   }
@@ -58,7 +63,7 @@ const FAQ = () => {
   const [show, setShow] = useState([]);
   return (
     <FAQInnerDiv id="FAQ">
-      <TitleH2 mt="70px" position="center">
+      <TitleH2 mt={70} position="center">
         FAQ
       </TitleH2>
       <UlWrap>

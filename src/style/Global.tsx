@@ -13,6 +13,10 @@ body {
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
 }
+img{
+  display: block;
+  width: 100%;
+}
 ul, li{
   list-style: none;
 }
