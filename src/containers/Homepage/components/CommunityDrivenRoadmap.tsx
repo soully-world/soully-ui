@@ -66,7 +66,7 @@ const CommunityDrivenRoadmapH4 = styled.h4`
 const UlWrap = styled.ul`
   align-items: center;
   position: relative;
-  padding-left:7%;
+  padding-left: 7%;
   padding-right: 4%;
   &:before,
   &:after {
@@ -78,7 +78,7 @@ const UlWrap = styled.ul`
     justify-content: space-between;
     border-left: 4px solid #f40638;
     margin-left: 0;
-    padding: 0
+    padding: 0;
     &:before,
     &:after {
       display: block;

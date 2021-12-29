@@ -16,9 +16,10 @@ const TheRarityWrapDiv = styled(InnerDiv)`
   }
   ${({ theme }) => theme.mediaQueries.md} {
     padding-left: 44px;
-    margin-top: 170px;
-    margin-left: 0;
-    padding-right: 0;
+    // margin-top: 170px;
+    // margin-left: 0;
+    // padding-right: 0;
+    margin: 170px auto 0;
     border-left: 4px solid ${({ theme }) => `${theme.colors.primaryDark}`};
     .fr {
       display: block;
