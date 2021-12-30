@@ -212,31 +212,31 @@ const TheRarityArr = [
     title: "The Pacifist",
     context:
       "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
-    img: "ThePacifist",
+    img: "1-1",
   },
   {
     title: "Free will Alliance",
     context:
       "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
-    img: "FreewillAlliance",
+    img: "2-1",
   },
   {
     title: "Phantom Federation",
     context:
       "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
-    img: "PhantomFederation",
+    img: "3-1",
   },
   {
     title: "Arora",
     context:
       "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
-    img: "Arora",
+    img: "4-1",
   },
 ];
 const TheRarity = () => {
   const [showPic, setShowPic] = useState(1);
-  const { isXs, isSm, isMd, isXl, isXxl } = useMatchBreakpoints();
-  const item = TheRarityArr[showPic];
+  const { isMd, isXl, isXxl } = useMatchBreakpoints();
+  const item = TheRarityArr[showPic - 1];
   return (
     <TheRarityWrapDiv id="Rarity">
       <TheRarityWrapFlex>
@@ -249,7 +249,7 @@ const TheRarity = () => {
               <picture>
                 <source type="image/png" srcSet={`${preLink}/images/therarity/${item.img}.png`} />
                 <source type="image/svg" srcSet={`${preLink}/images/therarity/${item.img}.svg`} />
-                <img src={`${preLink}/images/therarity/${item.img}.svg`} />
+                <img src={`${preLink}/images/therarity/${item.img}.png`} />
               </picture>
             </FrPicture>
             <Bg01></Bg01>
@@ -263,9 +263,9 @@ const TheRarity = () => {
                     setShowPic(v);
                   }}
                 >
+                  <source type="image/png" srcSet={`${preLink}/images/therarity/${v}.png`} />
                   <source type="image/jpg" srcSet={`${preLink}/images/therarity/${v}.jpg`} />
-                  <source type="image/svg" srcSet={`${preLink}/images/therarity/${v}.svg`} />
-                  <img src={`${preLink}/images/therarity/${v}.svg`} />
+                  <img src={`${preLink}/images/therarity/${v}.png`} />
                 </picture>
                 <TheRarityTitle>{item.title}</TheRarityTitle>
               </div>
@@ -279,7 +279,7 @@ const TheRarity = () => {
             <picture>
               <source type="image/png" srcSet={`${preLink}/images/therarity/${item.img}.png`} />
               <source type="image/svg" srcSet={`${preLink}/images/therarity/${item.img}.svg`} />
-              <img src={`${preLink}/images/therarity/${item.img}.svg`} />
+              <img src={`${preLink}/images/therarity/${item.img}.png`} />
             </picture>
           </FrPicture>
           <Bg01></Bg01>

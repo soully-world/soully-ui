@@ -107,8 +107,8 @@ const SoullyWorld = () => {
           <SmallImgWrap>
             {[1, 2, 3, 4, 5].map((v) => (
               <SmallImgPicture key={v}>
-                <source type="image/jpg" srcSet={`${preLink}/images/soullyworld/solly ${v}.jpg`} />
                 <source type="image/svg" srcSet={`${preLink}/images/soullyworld/solly ${v}.svg`} />
+                <source type="image/jpg" srcSet={`${preLink}/images/soullyworld/solly ${v}.jpg`} />
                 <img src={`${preLink}/images/soullyworld/solly ${v}.svg`} />
               </SmallImgPicture>
             ))}
@@ -137,8 +137,8 @@ const SoullyWorld = () => {
           </SoullyWorldContextText>
           <LongImgWrap>
             <picture>
-              <source type="image/jpg" srcSet={`${preLink}/images/soullyworld/Soully World Game.jpg`} />
               <source type="image/svg" srcSet={`${preLink}/images/soullyworld/Soully World Game.svg`} />
+              <source type="image/jpg" srcSet={`${preLink}/images/soullyworld/Soully World Game.jpg`} />
               <img src={`${preLink}/images/soullyworld/Soully World Game.svg`} />
             </picture>
           </LongImgWrap>

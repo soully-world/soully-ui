@@ -18,7 +18,7 @@ const UlWrapText = styled.ul`
   padding-right: 5%;
   display: none;
   ${({ theme }) => theme.mediaQueries.xl} {
-    display: block;
+    display: flex;
   }
 `;
 const LiWrapText = styled.li`
@@ -172,6 +172,8 @@ const LiWrap = styled.li`
   }
 `;
 const ContextText = styled(Text)`
+  position: relative;
+  z-index: 4;
   font-weight: normal;
   font-size: 14px;
   line-height: 18px;

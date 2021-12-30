@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { CONTRACT_ADDRESS } from "config";
-import { chainId } from "config/constants/tokens";
+import { chainId as adminChainId } from "config/constants/tokens";
 import { useSollyContract } from "hooks/useContract";
 import { CONTRACT_STATE, MAX_Soully, preLink } from "appConfig/index";
 import BigNumber from "bignumber.js";
@@ -10,6 +10,7 @@ import { formatUnits, parseEther } from "@ethersproject/units";
 import useToast from "hooks/useToast";
 import { ToastDescriptionWithTx } from "components/Toast";
 import { useBalance } from "hooks/useBalance";
+import useActiveWeb3React from "hooks/useActiveWeb3React";
 import { Button } from "uikit";
 
 import {
@@ -27,7 +28,7 @@ import {
 
 const Mintpage = () => {
   const { toastSuccess, toastError } = useToast();
-  const contract = useSollyContract(CONTRACT_ADDRESS[chainId]);
+  const contract = useSollyContract(CONTRACT_ADDRESS[adminChainId]);
   const balance: number = useBalance();
   const [vipSaleReserved, setVipSaleReserved] = useState<number>();
   const [state, setState] = useState<CONTRACT_STATE>(CONTRACT_STATE.paused);
@@ -36,11 +37,14 @@ const Mintpage = () => {
   const [price, setPrice] = useState<number>(0.07);
   const [totalCost, setTotalCost] = useState(0.07);
   const [count, setCount] = useState<number>(1); // 要mint的个数
+  const { chainId } = useActiveWeb3React();
   const { account } = useWeb3React();
-  const [connect, setConnect] = useState(false);
+  const [connect, setConnect] = useState(true);
   const handleUpdateState = useCallback(() => {
+    if (!contract?.totalSupply) {
+      setConnect(false);
+    }
     contract?.totalSupply().then((total: BN) => {
-      setConnect(true);
       // 总量是多少
       setTotal(total.toNumber());
       if (total.gte(MAX_Soully)) {
@@ -70,10 +74,15 @@ const Mintpage = () => {
     });
   }, [contract]);
   useEffect(() => {
-    if (contract) {
-      handleUpdateState();
+    console.log(chainId);
+    if (adminChainId !== chainId) {
+      setConnect(false);
+    } else {
+      if (contract) {
+        handleUpdateState();
+      }
     }
-  }, [contract]);
+  }, [contract, chainId]);
   useEffect(() => {
     let _cost = 0;
     _cost = new BigNumber(count).times(price || 0).toNumber();
@@ -181,7 +190,7 @@ const Mintpage = () => {
           <MintpageBtn>
             <i
               onClick={() => {
-                if (count > 0) {
+                if (count > 1) {
                   setCount(count - 1);
                 }
               }}

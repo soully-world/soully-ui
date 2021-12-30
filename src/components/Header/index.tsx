@@ -169,19 +169,14 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
       const Roadmap = this.getScrollTop("Roadmap") || 0;
       const Team = this.getScrollTop("Team") || 0;
       const FAQ = this.getScrollTop("FAQ") || 0;
-      this.setState(
-        {
-          About,
-          Mint,
-          Rarity,
-          Roadmap,
-          Team,
-          FAQ,
-        },
-        () => {
-          console.log({ About, Mint, Rarity, Roadmap, Team, FAQ });
-        },
-      );
+      this.setState({
+        About,
+        Mint,
+        Rarity,
+        Roadmap,
+        Team,
+        FAQ,
+      });
       if (!this.props.propsOnKey) {
         window.addEventListener("scroll", () => {
           this.doScroll();
@@ -223,7 +218,6 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
   }
   getScrollTop(idStr: string) {
     const _idStr = document.getElementById(idStr);
-    console.log(_idStr);
     const _idRect = _idStr?.getBoundingClientRect();
     return _idRect?.top;
   }
@@ -245,7 +239,6 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
       case "Roadmap":
       case "Team":
       case "FAQ":
-        console.log(_key);
         window.location.href = `/#${_key}`;
         break;
       case "Mint":
