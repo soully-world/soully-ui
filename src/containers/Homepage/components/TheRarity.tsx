@@ -247,9 +247,7 @@ const TheRarity = () => {
           <Fr className="fr">
             <FrPicture>
               <picture>
-                <source type="image/png" srcSet={`${preLink}/images/therarity/${item.img}.png`} />
-                <source type="image/svg" srcSet={`${preLink}/images/therarity/${item.img}.svg`} />
-                <img src={`${preLink}/images/therarity/${item.img}.png`} />
+                <img src={`${preLink}/images/therarity/${item.img}.jpg`} />
               </picture>
             </FrPicture>
             <Bg01></Bg01>
@@ -263,9 +261,7 @@ const TheRarity = () => {
                     setShowPic(v);
                   }}
                 >
-                  <source type="image/png" srcSet={`${preLink}/images/therarity/${v}.png`} />
-                  <source type="image/jpg" srcSet={`${preLink}/images/therarity/${v}.jpg`} />
-                  <img src={`${preLink}/images/therarity/${v}.png`} />
+                  <img src={`${preLink}/images/therarity/${v}.jpg`} />
                 </picture>
                 <TheRarityTitle>{item.title}</TheRarityTitle>
               </div>
@@ -277,9 +273,7 @@ const TheRarity = () => {
         <Fr className="fr">
           <FrPicture>
             <picture>
-              <source type="image/png" srcSet={`${preLink}/images/therarity/${item.img}.png`} />
-              <source type="image/svg" srcSet={`${preLink}/images/therarity/${item.img}.svg`} />
-              <img src={`${preLink}/images/therarity/${item.img}.png`} />
+              <img src={`${preLink}/images/therarity/${item.img}.jpg`} />
             </picture>
           </FrPicture>
           <Bg01></Bg01>

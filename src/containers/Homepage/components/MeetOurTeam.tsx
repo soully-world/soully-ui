@@ -144,9 +144,7 @@ const MeetOurTeam = () => {
             <LiWrap key={index}>
               <div className="inner">
                 <picture>
-                  <source type="image/png" srcSet={`${preLink}/images/meetourteam/${v.image}.png`} />
-                  <source type="image/svg" srcSet={`${preLink}/images/meetourteam/${v.image}.svg`} />
-                  <img src={`${preLink}/images/meetourteam/${v.image}.png`} />
+                  <img src={`${preLink}/images/meetourteam/${v.image}.jpg`} />
                 </picture>
                 <TitleH3>{v.title}</TitleH3>
                 <LiContextText>{v.context}</LiContextText>
