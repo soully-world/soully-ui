@@ -19,7 +19,7 @@ const UlWrap = styled.ul`
   }
 `;
 const LiWrap = styled.li`
-  width: 100%;
+  width: 48%;
   padding: 2px 2px 0;
   ${({ theme }) => theme.mediaQueries.sm} {
     width: 45%;

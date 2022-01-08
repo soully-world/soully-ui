@@ -10,7 +10,9 @@ const LinkWrap = styled.div<{
   margin-right: 0;
   justify-content: space-between;
   align-items: center;
+  display: none;
   ${({ theme }) => theme.mediaQueries.md} {
+    display: flex;
     margin-right: ${({ mr }) => mr || "0"};
     padding: 0;
     justify-content: start;

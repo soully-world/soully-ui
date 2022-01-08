@@ -206,9 +206,12 @@ const LastLine = styled(Line)`
 `;
 const SideH4 = styled.h4`
   position: absolute;
-  top: 20%;
   left: -36px;
-  transform: rotate(180deg);
+  // top: 20%;
+  // transform: rotate(180deg);
+
+  top: 50%;
+  transform: translateY(-50%);
   font-weight: 700;
   font-size: 20px;
   line-height: 30px;
@@ -220,16 +223,19 @@ const SideH4 = styled.h4`
   -webkit-writing-mode: vertical-lr;
   -ms-writing-mode: bt-lr;
   display: block;
+  i {
+    display: block;
+    transform: rotate(180deg);
+  }
   ${({ theme }) => theme.mediaQueries.xl} {
     display: none;
   }
 `;
 const CommunityDrivenRoadmap = () => {
   const { isXxl } = useMatchBreakpoints();
-  console.log(isXxl);
   return (
     <CommunityDrivenRoadmapInnerDiv id="Roadmap">
-      <TitleH2 mt={120} position="right">
+      <TitleH2 mt={120} position={isXxl ? "right" : "center"}>
         {isXxl ? "Community-Driven Roadmap" : "Roadmap"}
       </TitleH2>
       <UlWrapText>
@@ -251,7 +257,9 @@ const CommunityDrivenRoadmap = () => {
       <UlWrap>
         <LiWrap>
           <FristLine />
-          <SideH4>SOULLY</SideH4>
+          <SideH4>
+            <i>SOULLY</i>
+          </SideH4>
           <ContextText>
             <Point />
             <p>Soully World character creation</p>
@@ -288,7 +296,9 @@ const CommunityDrivenRoadmap = () => {
         </LiWrap>
         <LiWrap>
           <FristLine />
-          <SideH4>SOULLY</SideH4>
+          <SideH4>
+            <i>SOULLY</i>
+          </SideH4>
 
           <ContextText>
             <Point />
@@ -317,7 +327,9 @@ const CommunityDrivenRoadmap = () => {
         </LiWrap>
         <LiWrap>
           <FristLine />
-          <SideH4>SOULLY</SideH4>
+          <SideH4>
+            <i>SOULLY</i>
+          </SideH4>
 
           <ContextText>
             <Point />

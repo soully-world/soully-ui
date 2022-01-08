@@ -67,8 +67,8 @@ const Fl = styled.div`
   }
 `;
 const Fr = styled.div`
-  width: 300px;
-  height: 230px;
+  width: 290px;
+  height: 320px;
   margin-left: 20px;
   margin-top: 20px;
   position: relative;
@@ -84,8 +84,8 @@ const Fr = styled.div`
 `;
 const ImgSize = styled.div`
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 280px;
+  height: 280px;
   ${({ theme }) => theme.mediaQueries.md} {
     width: 70%;
     height: 70%;

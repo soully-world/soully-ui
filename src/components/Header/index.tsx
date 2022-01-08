@@ -66,7 +66,7 @@ const HeaderWarp = styled.header`
     height: 100%;
     z-index: 99;
     padding: 26px 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #000;
   }
   // 370
   ${({ theme }) => theme.mediaQueries.xxl} {
@@ -277,7 +277,15 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
           <div className="small">
             <img
               className="close"
-              onClick={() => this.setShowModal(!showModal)}
+              onClick={() => {
+                const _show = !showModal;
+                if (_show) {
+                  document.body.style.overflow = "hidden";
+                } else {
+                  document.body.style.overflow = "initial";
+                }
+                this.setShowModal(_show);
+              }}
               src={!showModal ? "/images/menu.png" : "/images/close.png"}
               alt="logo"
             />

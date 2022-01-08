@@ -4,14 +4,16 @@ import InnerDiv from "containers/Homepage/components/components/InnerDiv";
 import Logo from "../Header/components/logo";
 import ShareLink from "components/SharaLink";
 import WagmiSoullyBanner from "components/WagmiSoullyBanner";
-const FooterWarp = styled.div`
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-`;
+const FooterWarp = styled.div``;
 const FooterInnerDiv = styled(InnerDiv)`
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 36px 0;
+  padding: 16px 20px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 36px 0;
+  }
 `;
 
 const FooterWidget = () => {

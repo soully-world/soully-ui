@@ -39,11 +39,11 @@ contract Soully is ERC721Enumerable, Ownable {
     function preSaleMint(uint256 num) public payable {
         uint256 supply = totalSupply();
         uint256 reservedAmt = vipSaleReserved[msg.sender];
-        require(saleState > 0, "Presale isn't active");
-        require(reservedAmt > 0, "No tokens reserved for address");
-        require(num <= reservedAmt, "Can't mint more than reserved");
-        require(supply + num <= MAX_Soully, "Exceeds maximum Soully World supply");
-        require(msg.value >= price * num, "Ether sent is not correct");
+        require(saleState > 0, "Soully:: Presale isn't active");
+        require(reservedAmt > 0, "Soully:: No tokens reserved for address");
+        require(num <= reservedAmt, "Soully:: Can't mint more than reserved");
+        require(supply + num <= MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
+        require(msg.value >= price * num, "Soully:: Ether sent is not correct");
         vipSaleReserved[msg.sender] = reservedAmt - num;
         for (uint256 i; i < num; i++) {
             uint256 R = _random(__random());
@@ -55,13 +55,13 @@ contract Soully is ERC721Enumerable, Ownable {
     }
 
     function mint(address to, uint256 num) public payable virtual {
-        require(to != address(0x0), "address err");
+        require(to != address(0x0), "Soully:: address err");
         uint256 supply = totalSupply();
-        require(saleState > 1, "Sale not live");
-        require(num > 0, "Cannot buy 0");
-        require(num <= maxPurchase, "Exceeds max number of Soully World in one transaction");
-        require(supply + num < MAX_Soully, "Purchase would exceed max supply of Soully World");
-        require(price * num <= msg.value, "Ether value sent is not correct");
+        require(saleState > 1, "Soully:: Sale not live");
+        require(num > 0, "Soully:: Cannot buy 0");
+        require(num <= maxPurchase, "Soully:: Exceeds max number of Soully World in one transaction");
+        require(supply + num < MAX_Soully, "Soully:: Purchase would exceed max supply of Soully World");
+        require(price * num <= msg.value, "Soully:: Ether value sent is not correct");
 
         for (uint256 i; i < num; i++) {
             uint256 R = _random(__random());
@@ -86,8 +86,8 @@ contract Soully is ERC721Enumerable, Ownable {
     }
 
     function setSaleState(uint256 _saleState) public virtual onlyOwner {
-        require(saleState >= 0, "Sale state cannot < 0");
-        require(saleState < 2, "Sale state cannot > 1");
+        require(saleState >= 0, "Soully:: Sale state cannot < 0");
+        require(saleState < 2, "Soully:: Sale state cannot > 1");
         saleState = _saleState;
     }
 
@@ -100,7 +100,7 @@ contract Soully is ERC721Enumerable, Ownable {
     }
 
     function setPrice(uint256 _price) public virtual onlyOwner {
-        require(_price > 0, "Zero price");
+        require(_price > 0, "Soully:: Zero price");
         price = _price;
     }
 
@@ -124,7 +124,7 @@ contract Soully is ERC721Enumerable, Ownable {
     }
 
     function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
-        require(_exists(tokenIdKeyMap[_tokenId]), "token is not mint");
+        require(_exists(tokenIdKeyMap[_tokenId]), "Soully:: token is not mint");
         return string(abi.encodePacked(_baseTokenURI, uint2str(tokenIdKeyMap[_tokenId])));
     }
 
