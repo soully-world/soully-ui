@@ -233,6 +233,7 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
     }
   };
   changeOnKey(_key: string) {
+    document.body.style.overflow = "initial";
     switch (_key.replaceAll(" ", "")) {
       case "About":
       case "Rarity":
