@@ -9,6 +9,17 @@ const GlobalStyle = createGlobalStyle`
 *{
   font-family: "Readex Pro", sans-serif;
 }
+@keyframes marquee {
+  0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0)
+  }
+
+  to {
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%)
+  }
+}
 body {
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};

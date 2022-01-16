@@ -19,9 +19,8 @@ const Banner = () => {
           <BannerTitle>Soully World</BannerTitle>
           <BannerSubTitle>Who Need Protector</BannerSubTitle>
           <BannerContextText>
-            Join this ultra-exclusive NFT project featuring not only authentic art, but unmatched utility! Gambling Ape
-            owners co-own a Casino in the Metaverse, are invited to exclusive meetups & weekly competitions, and much
-            more!
+            Soully World is an NFT open-world made up of 10,000 completely original characters and a separate story of
+            overhead history.
           </BannerContextText>
         </Flex>
         <BannerBtn>

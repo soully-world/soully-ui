@@ -6,7 +6,7 @@ const WagmiSoullyBannerStyle = styled(Flex)`
   justify-content: space-between;
   height: 44px;
   padding: 8px 0;
-  overflow: hidden;
+  animation: marquee 15s linear infinite;
   ${({ theme }) => theme.mediaQueries.xxl} {
     height: 64px;
     padding: 14px 0;
@@ -33,14 +33,24 @@ const WAGMIHeading = styled(TextHeading)`
 `;
 const WagmiSoullyBanner = () => {
   return (
-    <WagmiSoullyBannerStyle>
-      {new Array(10).fill("").map((v, index) => (
-        <Flex flexDirection="row" justifyContent="space-between" key={index}>
-          <SOULLYHeading scale="md">SOULLY</SOULLYHeading>
-          <WAGMIHeading scale="md">#WAGMI</WAGMIHeading>
-        </Flex>
-      ))}
-    </WagmiSoullyBannerStyle>
+    <Flex maxWidth={"100vw"} overflow="hidden">
+      <WagmiSoullyBannerStyle>
+        {new Array(10).fill("").map((v, index) => (
+          <Flex flexDirection="row" justifyContent="space-between" key={index}>
+            <SOULLYHeading scale="md">SOULLY</SOULLYHeading>
+            <WAGMIHeading scale="md">#WAGMI</WAGMIHeading>
+          </Flex>
+        ))}
+      </WagmiSoullyBannerStyle>
+      <WagmiSoullyBannerStyle>
+        {new Array(10).fill("").map((v, index) => (
+          <Flex flexDirection="row" justifyContent="space-between" key={index}>
+            <SOULLYHeading scale="md">SOULLY</SOULLYHeading>
+            <WAGMIHeading scale="md">#WAGMI</WAGMIHeading>
+          </Flex>
+        ))}
+      </WagmiSoullyBannerStyle>
+    </Flex>
   );
 };
 

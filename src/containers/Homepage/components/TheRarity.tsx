@@ -37,6 +37,7 @@ const TheRarityTitle = styled.h3`
   font-weight: bold;
   font-size: 18px;
   line-height: 25px;
+  word-break: break-all;
   color: ${({ theme }) => `${theme.colors.text}`};
   display: none;
   ${({ theme }) => theme.mediaQueries.md} {
@@ -211,26 +212,30 @@ const TheRarityArr = [
   {
     title: "The Pacifist",
     context:
-      "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
+      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
     img: "1-1",
+    smallImg: 1,
   },
   {
-    title: "Free will Alliance",
+    title: "Freewill Alliance",
     context:
-      "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
+      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
     img: "2-1",
+    smallImg: 2,
   },
   {
     title: "Phantom Federation",
     context:
-      "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
+      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
     img: "3-1",
+    smallImg: 3,
   },
   {
     title: "Arora",
     context:
-      "EVOL, a 2000 year old Cherub, has been cast down to earth after a disagreement with the management. At first too proud to try and get back home, now, unable to remember what he has to do to get there.",
+      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
     img: "4-1",
+    smallImg: 4,
   },
 ];
 const TheRarity = () => {
@@ -254,16 +259,16 @@ const TheRarity = () => {
             <Bg02></Bg02>
           </Fr>
           <ListFlex>
-            {[1, 2, 3, 4].map((v) => (
-              <div key={v} className={v === showPic ? "on" : ""}>
+            {TheRarityArr.map((v, index) => (
+              <div key={index} className={v.smallImg === showPic ? "on" : ""}>
                 <picture
                   onClick={() => {
-                    setShowPic(v);
+                    setShowPic(v.smallImg);
                   }}
                 >
-                  <img src={`${preLink}/images/therarity/${v}.jpg`} />
+                  <img src={`${preLink}/images/therarity/${v.smallImg}.jpg`} />
                 </picture>
-                <TheRarityTitle>{item.title}</TheRarityTitle>
+                <TheRarityTitle>{isMd || isXl || isXxl ? v.title : item.title}</TheRarityTitle>
               </div>
             ))}
           </ListFlex>

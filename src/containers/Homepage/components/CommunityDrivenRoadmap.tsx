@@ -145,6 +145,12 @@ const LiWrap = styled.li`
       }
     }
   }
+  &:last-child {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
   &:before {
     content: "";
     position: absolute;
@@ -156,6 +162,7 @@ const LiWrap = styled.li`
     transform: skew(15deg, 0);
     border-left: 4px solid #f40638;
     background-color: #000;
+    box-shadow: 0 3px 10px #000;
     z-index: 2;
   }
   &:after {
@@ -168,6 +175,7 @@ const LiWrap = styled.li`
     transform: skew(-15deg, 0);
     border-left: 4px solid #f40638;
     background-color: #000;
+    box-shadow: 0 -3px 10px #000;
     z-index: 2;
   }
 `;
@@ -266,31 +274,27 @@ const CommunityDrivenRoadmap = () => {
           </ContextText>
           <ContextText>
             <Point />
-            <p> Test chain deployment of smart contract in mint phase</p>
+            <p>Test chain deployment of smart contract in mint phase</p>
           </ContextText>
           <ContextText>
             <Point />
-            <p> Discord community building and bot deployment</p>
+            <p>Collaboration with other brands to create co-branded NFTs</p>
           </ContextText>
           <ContextText>
             <Point />
-            <p> Collaboration with other brands to create co-branded NFTs</p>
+            <p>Official website with basic functions</p>
           </ContextText>
           <ContextText>
             <Point />
-            <p>Joint marketing cooperation with other communities and kol</p>
-          </ContextText>
-          <ContextText>
-            <Point />
-            <p>Recruitment of team members</p>
-          </ContextText>
-          <ContextText>
-            <Point />
-            <p>Discord member invitation contest</p>
+            <p>Joint marketing cooperation with other communities and Kol</p>
           </ContextText>
           <ContextText>
             <Point />
             <p>Launch of early member incentive program</p>
+          </ContextText>
+          <ContextText>
+            <Point />
+            <p>Weekly Texas Hold'em tournaments will be held on Discord</p>
           </ContextText>
           <LastLine />
         </LiWrap>
@@ -306,22 +310,18 @@ const CommunityDrivenRoadmap = () => {
           </ContextText>
           <ContextText>
             <Point />
-            <p>Weekly Texas Hold'em tournaments will be held on Discord</p>
-          </ContextText>
-          <ContextText>
-            <Point />
             <p>
-              Story creation incentive program, create story Frists for your own Soully and post them on designated
+              Story creation incentive program, create storylines for your own Soully, and post them on designated
               Discord channels to receive rewards
             </p>
           </ContextText>
           <ContextText>
             <Point />
-            <p>Fan art contest within the Soully World community</p>
+            <p>Fanart contest within the Soully World community</p>
           </ContextText>
           <ContextText>
             <Point />
-            <p>Soully rarity system is available on the official website to check your Soully rarity in real time</p>
+            <p>Soully rarity system is available on the official website to check your Soully rarity in real-time</p>
           </ContextText>
           <LastLine />
         </LiWrap>
@@ -333,7 +333,7 @@ const CommunityDrivenRoadmap = () => {
 
           <ContextText>
             <Point />
-            <p>Upload Soully World Mall, get or buy the Soully products you want for free</p>
+            <p>Launch Soully World Mall, get or buy the Soully products you want for free</p>
           </ContextText>
           <ContextText>
             <Point />
@@ -345,11 +345,15 @@ const CommunityDrivenRoadmap = () => {
           </ContextText>
           <ContextText>
             <Point />
-            <p>Develop Soully World game based on Unreal Engine 4</p>
+            <p>Develop Soully World game</p>
           </ContextText>
           <ContextText>
             <Point />
             <p>Release Soully World eco-governance tokens</p>
+          </ContextText>
+          <ContextText>
+            <Point />
+            <p>More plans and contents .....</p>
           </ContextText>
           <LastLine />
         </LiWrap>

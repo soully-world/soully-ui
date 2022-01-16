@@ -68,35 +68,11 @@ const SoullyWorld = () => {
       <TitleH2 position="center">Soully World</TitleH2>
       <UlWrap>
         <LiWrap>
-          <TitleH3 color="primary">Kriyan-Soully</TitleH3>
-          <SoullyWorldContextText>
-            Kriyan-Soully is an NFT collection jointly launched by 0xlambert and SpiritSwap, which is completely
-            handmade by 0xlambert and aims to inject more trendy elements and fresh creativity into SpiritSwap's brand
-            image.
-          </SoullyWorldContextText>
-          <SoullyWorldContextText mt={40}>
-            They will be sold as an auction on Fantom, and those who acquire any one of the Kriyan-Soully will receive a
-            wealth of benefits granted by Soully World.
-          </SoullyWorldContextText>
-          <SoullyWorldContextText>
-            <Point></Point>Holders of the co-branded Kriyan-Soully will have direct access to the V1 whitelist.
-          </SoullyWorldContextText>
-          <SoullyWorldContextText>
-            <Point></Point>Kriyan-Soully recipients can mint up to 25 V1 Soullys at once.
-          </SoullyWorldContextText>
-          <SoullyWorldContextText>
-            <Point></Point>Kriyan-Soully recipients can get 1 V1 airdrop for free.
-          </SoullyWorldContextText>
-          <LongImgWrap>
-            <picture>
-              <img className="long" src={`${preLink}/images/soullyworld/Kriyan-Soully.jpg`} />
-            </picture>
-          </LongImgWrap>
-        </LiWrap>
-
-        <LiWrap>
           <TitleH3 color="primary">Soully World V1</TitleH3>
-          <SoullyWorldContextText>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+          >
             Soully is a 3D NFT artwork hand-painted by 0xLambert, waiting for any dreamer with a whimsical mind to give
             it a soul, with a total of 10,000 pieces. Each Soully is an original design that not only has its own
             colors, but will also appear in the SoullyWorld meta-universe in the future, giving each Soully owner the
@@ -113,20 +89,29 @@ const SoullyWorld = () => {
 
         <LiWrap>
           <TitleH3 color="primary">Soully World V2</TitleH3>
-          <SoullyWorldContextText>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+          >
             Preparing Soully for the next stage of evolution, the V2 stage will meet everyone with cooler physical
             features and clearer resolution.
           </SoullyWorldContextText>
-          <SoullyWorldContextText mt={40}>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+            mt={40}
+          >
             V2 will continue the story background and racial classification of V1, and introduce combat mechs for all
             combat troops. The total number of V2 will be decided by the community, and the way to get V2 mainly comes
             from holding V1 and participating in the open whitelist pre-sale.
           </SoullyWorldContextText>
         </LiWrap>
-
-        <LiWrap mb="0">
+        <LiWrap>
           <TitleH3 color="primary">Soully World Game</TitleH3>
-          <SoullyWorldContextText>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+          >
             After gaining some user base and start-up capital, SoullyWorld will develop a war chess game. (Find out
             what's different about the Soully in v1? They have unique professions, and any ten Soullys are completely
             free to combine as a battle group.)
@@ -142,6 +127,45 @@ const SoullyWorld = () => {
             alone to decide the future course, so at the end of the V2 release, there will be a DAO organization with
             mainly community members to emerge and decide the next phase together.
           </SoullyWorldContextText>
+        </LiWrap>
+        <LiWrap mb="0">
+          <TitleH3 color="primary">Spirit Swap & Soully World co-branded</TitleH3>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+          >
+            Kriyan-Soully is an NFT collection jointly launched by 0xlambert and SpiritSwap, which is completely
+            handmade by 0xlambert and aims to inject more trendy elements and fresh creativity into SpiritSwap's brand
+            image.
+          </SoullyWorldContextText>
+          <SoullyWorldContextText mt={40}>
+            They will be sold as an auction on Fantom, and those who acquire any one of the Kriyan-Soully will receive a
+            wealth of benefits granted by Soully World.(The auction has not started yet, please pay attention to
+            Twitter/Discord for more information)
+          </SoullyWorldContextText>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+          >
+            <Point></Point>Holders of the co-branded Kriyan-Soully will have direct access to the V1 whitelist.
+          </SoullyWorldContextText>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+          >
+            <Point></Point>Kriyan-Soully recipients can mint up to 25 V1 Soullys at once.
+          </SoullyWorldContextText>
+          <SoullyWorldContextText
+            // className="animate animate__slow animate__animated"
+            data-animate="animate__fadeInRight"
+          >
+            <Point></Point>Kriyan-Soully recipients can get 1 V1 airdrop for free.
+          </SoullyWorldContextText>
+          <LongImgWrap>
+            <picture>
+              <img className="long" src={`${preLink}/images/soullyworld/Kriyan-Soully.jpg`} />
+            </picture>
+          </LongImgWrap>
         </LiWrap>
       </UlWrap>
     </SoullyWorldWrapDiv>
