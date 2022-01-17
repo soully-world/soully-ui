@@ -2,12 +2,13 @@ import styled from "styled-components";
 import { Flex, Heading } from "uikit";
 import ContextText from "components/ContextText";
 export const BannerWrapDiv = styled.div<{ preLink: string }>`
-  background: url("${({ preLink }) => preLink}/images/banner/bg.png");
+  // background: url("${({ preLink }) => preLink}/images/banner/bg.png");
   background-repeat: no-repeat;
-  background-size: 3355px 1440px;
-  background-position: center top;
-  padding-top: 120px;
-  padding-bottom: 120px;
+  // background-size: 3355px 1440px;
+  // background-position: center top;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
 
   ${({ theme }) => theme.mediaQueries.md} {
   }
@@ -16,8 +17,17 @@ export const BannerWrapDiv = styled.div<{ preLink: string }>`
     background-size: 2560px 1100px;
     padding-bottom: 300px;
   }
+  video {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+  }
 `;
 export const BannerInnerDiv = styled.div`
+  position: relative;
+  z-index: 2;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;

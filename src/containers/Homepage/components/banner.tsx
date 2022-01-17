@@ -36,6 +36,9 @@ const Banner = () => {
           <Button variant="secondary">Join Our Discord</Button>
         </BannerBtn>
       </BannerInnerDiv>
+      <video autoPlay={true} loop={true} playsInline={true}>
+        <source src="soully.mp4" type="video/mp4" />
+      </video>
     </BannerWrapDiv>
   );
 };

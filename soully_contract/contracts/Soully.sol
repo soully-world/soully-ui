@@ -124,8 +124,8 @@ contract Soully is ERC721Enumerable, Ownable {
     }
 
     function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
-        require(_exists(tokenIdKeyMap[_tokenId]), "Soully:: token is not mint");
-        return string(abi.encodePacked(_baseTokenURI, uint2str(tokenIdKeyMap[_tokenId])));
+        require(_exists(_tokenId), "Soully:: token is not mint");
+        return string(abi.encodePacked(_baseTokenURI, _tokenId.toString()));
     }
 
     function uint2str(uint256 _i) internal pure returns (string memory _uintAsString) {
