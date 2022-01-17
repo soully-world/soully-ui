@@ -14,6 +14,16 @@ const Banner = () => {
   const history = useHistory();
   return (
     <BannerWrapDiv preLink={preLink} id="Home">
+      <video
+        muted
+        autoPlay={true}
+        loop={true}
+        playsInline={true}
+        disablePictureInPicture={true}
+        disableRemotePlayback={true}
+      >
+        <source src="soully.mp4" type="video/mp4" />
+      </video>
       <BannerInnerDiv>
         <Flex flex={1} flexDirection="column">
           <BannerTitle>Soully World</BannerTitle>
@@ -36,9 +46,6 @@ const Banner = () => {
           <Button variant="secondary">Join Our Discord</Button>
         </BannerBtn>
       </BannerInnerDiv>
-      <video autoPlay={true} loop={true} playsInline={true}>
-        <source src="soully.mp4" type="video/mp4" />
-      </video>
     </BannerWrapDiv>
   );
 };
