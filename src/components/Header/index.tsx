@@ -63,7 +63,6 @@ const HeaderWarp = styled.header`
     top: 80px;
     left: 0;
     width: 100%;
-    height: 100%;
     z-index: 99;
     padding: 26px 0;
     background-color: #000;
@@ -89,7 +88,7 @@ const Account = styled.div`
   > svg {
     &:hover {
       cursor: pointer;
-      fill: #1fc7d4;
+      opacity: 0.7;
     }
   }
   .head_icon {

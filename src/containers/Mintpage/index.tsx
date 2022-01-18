@@ -149,6 +149,9 @@ const Mintpage = () => {
         }
       })
       .catch((err) => {
+        if ((err?.data?.message || "").toLowerCase().indexOf("token already minted") > -1) {
+          mint();
+        }
         toastError(err?.data?.message || "Mint Error!");
       });
   }, [totalCost, account]);

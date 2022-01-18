@@ -34,7 +34,11 @@ export default class Layout extends React.Component {
     const { children } = this.props;
     return (
       <>
-        <div className="animate animate__animated" data-animate="animate__fadeInDown">
+        <div
+          className="animate animate__animated"
+          data-animate="animate__fadeInDown"
+          style={{ position: "relative", zIndex: 10 }}
+        >
           <Header />
         </div>
         <main style={{ minHeight: "1200px" }}>{children}</main>

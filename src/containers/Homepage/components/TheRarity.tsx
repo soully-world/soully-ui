@@ -132,14 +132,14 @@ const FrPicture = styled(ImgSize)`
 `;
 const ListFlex = styled(Flex)`
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   div {
     width: 25%;
     opacity: 0.7;
     transition: all 0.3s ease;
     h3 {
       display: block;
-      padding: 10px 20px 30px;
+      padding: 10px 4px 30px;
       font-size: 16px;
       line-height: 20px;
       // white-space: nowrap;
@@ -268,7 +268,7 @@ const TheRarity = () => {
                 >
                   <img src={`${preLink}/images/therarity/${v.smallImg}.jpg`} />
                 </picture>
-                <TheRarityTitle>{isMd || isXl || isXxl ? v.title : item.title}</TheRarityTitle>
+                <TheRarityTitle>{isXxl ? item.title : v.title}</TheRarityTitle>
               </div>
             ))}
           </ListFlex>
