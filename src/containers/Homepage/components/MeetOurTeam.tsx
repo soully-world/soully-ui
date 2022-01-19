@@ -111,7 +111,7 @@ const MeetOurTeamArr = [
   },
   {
     image: "3",
-    title: "Typer",
+    title: "Ana Chen",
     context: "Game company master planner, NFT addict",
   },
   {
@@ -126,7 +126,7 @@ const MeetOurTeamArr = [
   },
   {
     image: "6",
-    title: "Ana Chen",
+    title: "Typer",
     context: "Community leader, Gaming Junkie, Independt woman",
   },
 ];
