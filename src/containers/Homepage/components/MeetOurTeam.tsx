@@ -126,7 +126,7 @@ const MeetOurTeamArr = [
   },
   {
     image: "6",
-    title: "Typer",
+    title: "Ana Chen",
     context: "Community leader, Gaming Junkie, Independt woman",
   },
 ];
