@@ -10,7 +10,6 @@ import { formatUnits, parseEther } from "@ethersproject/units";
 import useToast from "hooks/useToast";
 import { ToastDescriptionWithTx } from "components/Toast";
 import { useBalance } from "hooks/useBalance";
-import useActiveWeb3React from "hooks/useActiveWeb3React";
 import { Button } from "uikit";
 
 import {
@@ -32,14 +31,13 @@ const Mintpage = () => {
   const balance: number = useBalance();
   const [vipSaleReserved, setVipSaleReserved] = useState<number>();
   const [state, setState] = useState<CONTRACT_STATE>(CONTRACT_STATE.paused);
-  const [maxPurchase, setMaxPurchase] = useState<number>(20);
+  const [maxPurchase] = useState<number>(3);
   const [total, setTotal] = useState<number>(0);
-  const [price, setPrice] = useState<number>(0.07);
-  const [totalCost, setTotalCost] = useState(0.07);
+  const [price, setPrice] = useState<number>(0.06);
+  const [totalCost, setTotalCost] = useState(0.06);
   const [count, setCount] = useState<number>(1); // 要mint的个数
-  const { chainId } = useActiveWeb3React();
-  const { account } = useWeb3React();
-  const [connect, setConnect] = useState(true);
+  const { account, chainId } = useWeb3React();
+  const [connect, setConnect] = useState(false);
   const handleUpdateState = useCallback(() => {
     if (!contract?.totalSupply) {
       setConnect(false);
@@ -68,21 +66,23 @@ const Mintpage = () => {
       setVipSaleReserved(reserved.toNumber());
     });
 
-    contract?.maxPurchase().then((_maxPurchase: BN) => {
-      // 非vip单次能够领取个数
-      setMaxPurchase(_maxPurchase.toNumber());
-    });
+    // contract?.maxPurchase().then((_maxPurchase: BN) => {
+    //   // 非vip单次能够领取个数
+    //   setMaxPurchase(_maxPurchase.toNumber());
+    // });
   }, [contract]);
   useEffect(() => {
-    console.log(chainId);
+    console.log(adminChainId, chainId);
     if (adminChainId !== chainId) {
       setConnect(false);
     } else {
+      console.log("eeeee");
+      setConnect(true);
       if (contract) {
         handleUpdateState();
       }
     }
-  }, [contract, chainId]);
+  }, [contract, chainId, connect]);
   useEffect(() => {
     let _cost = 0;
     _cost = new BigNumber(count).times(price || 0).toNumber();
@@ -139,9 +139,8 @@ const Mintpage = () => {
   }, [totalCost, account]);
   const mint = useCallback(() => {
     contract
-      .mint(account, count, { from: account, value: parseEther(`${totalCost}`) })
+      .mint(account, count, { from: account, value: parseEther(`${totalCost.toFixed(2)}`) })
       .then((result) => {
-        console.log(result);
         if (result && result.hash) {
           toastSuccess("mint successful!", <ToastDescriptionWithTx txHash={`${result.hash}`} />);
         } else {
@@ -155,6 +154,7 @@ const Mintpage = () => {
         toastError(err?.data?.message || "Mint Error!");
       });
   }, [totalCost, account]);
+  console.log(connect);
   return (
     <MintpageWrapDiv preLink={preLink}>
       <MintpageInnerDiv>
@@ -172,7 +172,7 @@ const Mintpage = () => {
           </div>
         </MintpageInnerDivFl>
         <MintpageInnerDivFr>
-          <h2>MINT PRICE: {price} ETH </h2>
+          <h2>MINT PRICE: {price.toLocaleString()} ETH </h2>
           <div className="line_bg">
             <i
               style={{
@@ -181,12 +181,12 @@ const Mintpage = () => {
             ></i>
           </div>
           <h4>
-            {total} of {MAX_Soully} minted
+            {total.toLocaleString()} of {MAX_Soully.toLocaleString()} minted
           </h4>
           <CostStyled>
             <h4>TOTAL COST</h4>
             <h3>
-              <i>{totalCost} </i>ETH
+              <i>{totalCost.toFixed(2)} </i>ETH
             </h3>
           </CostStyled>
           <h5>MINT QTY: {count}</h5>

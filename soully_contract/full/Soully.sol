@@ -27,7 +27,6 @@ interface IERC165 {
 
 pragma solidity ^0.8.0;
 
-
 /**
  * @dev Required interface of an ERC721 compliant contract.
  */
@@ -195,7 +194,6 @@ interface IERC721Receiver {
 // File: @openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol
 
 pragma solidity ^0.8.0;
-
 
 /**
  * @title ERC-721 Non-Fungible Token Standard, optional metadata extension
@@ -530,7 +528,6 @@ library Strings {
 
 pragma solidity ^0.8.0;
 
-
 /**
  * @dev Implementation of the {IERC165} interface.
  *
@@ -557,13 +554,6 @@ abstract contract ERC165 is IERC165 {
 // File: @openzeppelin/contracts/token/ERC721/ERC721.sol
 
 pragma solidity ^0.8.0;
-
-
-
-
-
-
-
 
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including
@@ -969,7 +959,6 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
 pragma solidity ^0.8.0;
 
-
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -1267,7 +1256,6 @@ library SafeMath {
 
 pragma solidity ^0.8.0;
 
-
 /**
  * @title ERC-721 Non-Fungible Token Standard, optional enumeration extension
  * @dev See https://eips.ethereum.org/EIPS/eip-721
@@ -1294,8 +1282,6 @@ interface IERC721Enumerable is IERC721 {
 // File: @openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol
 
 pragma solidity ^0.8.0;
-
-
 
 /**
  * @dev This implements an optional extension of {ERC721} defined in the EIP that adds
@@ -1500,18 +1486,12 @@ library Counters {
 
 pragma solidity ^0.8.0;
 
-
-
-
-
-
-
 contract Soully is ERC721Enumerable, Ownable {
     using Strings for uint256;
     using Counters for Counters.Counter;
 
-    uint256 public price = 70000000000000000; // 0.07
-    uint256 public constant maxPurchase = 20;
+    uint256 public price = 60000000000000000; // 0.07
+    uint256 public constant maxPurchase = 3;
     uint256 public constant MAX_Soully = 10000;
     uint256 private constant MAX_Vip_Mint = 10;
     string private _baseTokenURI;
@@ -1541,7 +1521,7 @@ contract Soully is ERC721Enumerable, Ownable {
         require(saleState > 0, "Soully:: Presale isn't active");
         require(reservedAmt > 0, "Soully:: No tokens reserved for address");
         require(num <= reservedAmt, "Soully:: Can't mint more than reserved");
-        require(supply + num < MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
+        require(supply + num <= MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
         require(msg.value >= price * num, "Soully:: Ether sent is not correct");
         vipSaleReserved[msg.sender] = reservedAmt - num;
         for (uint256 i; i < num; i++) {

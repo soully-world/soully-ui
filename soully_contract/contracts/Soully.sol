@@ -11,8 +11,8 @@ contract Soully is ERC721Enumerable, Ownable {
     using Strings for uint256;
     using Counters for Counters.Counter;
 
-    uint256 public price = 70000000000000000; // 0.07
-    uint256 public constant maxPurchase = 20;
+    uint256 public price = 60000000000000000; // 0.06
+    uint256 public constant maxPurchase = 3;
     uint256 public constant MAX_Soully = 10000;
     uint256 private constant MAX_Vip_Mint = 10;
     string private _baseTokenURI;
