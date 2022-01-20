@@ -168,6 +168,7 @@ const Mintpage = () => {
             <MintpageContextText>3. Click on the button to mint your Soully! </MintpageContextText>
             <MintpageContextText>4. Max 3 per transaction </MintpageContextText>
             <MintpageContextText>5. No Bonding Curves </MintpageContextText>
+            <MintpageContextText>6. Good luck! </MintpageContextText>
           </div>
         </MintpageInnerDivFl>
         <MintpageInnerDivFr>
