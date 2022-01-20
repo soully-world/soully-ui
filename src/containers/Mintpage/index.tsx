@@ -166,9 +166,8 @@ const Mintpage = () => {
             <MintpageContextText>1. Connect your wallet with MetaMask </MintpageContextText>
             <MintpageContextText>2. Select your Mint Quantity </MintpageContextText>
             <MintpageContextText>3. Click on the button to mint your Soully! </MintpageContextText>
-            <MintpageContextText>4. Max 10 per transaction </MintpageContextText>
-            <MintpageContextText>5. Max 20 per wallet </MintpageContextText>
-            <MintpageContextText>6. No Bonding Curves </MintpageContextText>
+            <MintpageContextText>4. Max 3 per transaction </MintpageContextText>
+            <MintpageContextText>5. No Bonding Curves </MintpageContextText>
           </div>
         </MintpageInnerDivFl>
         <MintpageInnerDivFr>
