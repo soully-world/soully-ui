@@ -33,8 +33,8 @@ const Mintpage = () => {
   const [state, setState] = useState<CONTRACT_STATE>(CONTRACT_STATE.paused);
   const [maxPurchase] = useState<number>(3);
   const [total, setTotal] = useState<number>(0);
-  const [price, setPrice] = useState<number>(0.07);
-  const [totalCost, setTotalCost] = useState(0.07);
+  const [price, setPrice] = useState<number>(0.06);
+  const [totalCost, setTotalCost] = useState(0.06);
   const [count, setCount] = useState<number>(1); // 要mint的个数
   const { account, chainId } = useWeb3React();
   const [connect, setConnect] = useState(false);
@@ -139,7 +139,7 @@ const Mintpage = () => {
   }, [totalCost, account]);
   const mint = useCallback(() => {
     contract
-      .mint(account, count, { from: account, value: parseEther(`${totalCost.toFixed(18)}`) })
+      .mint(account, count, { from: account, value: parseEther(`${totalCost.toFixed(2)}`) })
       .then((result) => {
         if (result && result.hash) {
           toastSuccess("mint successful!", <ToastDescriptionWithTx txHash={`${result.hash}`} />);
@@ -186,7 +186,7 @@ const Mintpage = () => {
           <CostStyled>
             <h4>TOTAL COST</h4>
             <h3>
-              <i>{totalCost.toFixed(18)} </i>ETH
+              <i>{totalCost.toFixed(2)} </i>ETH
             </h3>
           </CostStyled>
           <h5>MINT QTY: {count}</h5>
