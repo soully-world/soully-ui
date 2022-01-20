@@ -1511,7 +1511,7 @@ contract Soully is ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
 
     uint256 public price = 70000000000000000; // 0.07
-    uint256 public constant maxPurchase = 20;
+    uint256 public constant maxPurchase = 3;
     uint256 public constant MAX_Soully = 10000;
     uint256 private constant MAX_Vip_Mint = 10;
     string private _baseTokenURI;
@@ -1541,7 +1541,7 @@ contract Soully is ERC721Enumerable, Ownable {
         require(saleState > 0, "Soully:: Presale isn't active");
         require(reservedAmt > 0, "Soully:: No tokens reserved for address");
         require(num <= reservedAmt, "Soully:: Can't mint more than reserved");
-        require(supply + num < MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
+        require(supply + num <= MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
         require(msg.value >= price * num, "Soully:: Ether sent is not correct");
         vipSaleReserved[msg.sender] = reservedAmt - num;
         for (uint256 i; i < num; i++) {
