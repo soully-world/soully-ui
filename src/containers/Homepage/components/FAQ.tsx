@@ -64,7 +64,7 @@ const FQAArr = [
 
   {
     title: "When will Soully NFT launch?",
-    context: "The pre-sale will launch on January, 24th at 2 PM UTC, and our public sale on January, 26th at 2 PM UTC",
+    context: "The pre-sale will launch on January, 26th at 2 PM UTC, and our public sale on January, 29th at 2 PM UTC",
   },
 
   {
