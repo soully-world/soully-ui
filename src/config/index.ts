@@ -3,8 +3,9 @@ import { ChainId } from "config/constants/tokens";
 export const SCAN_URLS = {
   [ChainId.BINANCE_MAINNET]: "https://bscscan.com",
   [ChainId.BINANCE_TESTNET]: "https://testnet.bscscan.com",
-  [ChainId.ETH_MAINNET]: "https://etherscan.io/",
-  [ChainId.ETH_ROPSTEN_TESTNET]: "https://ropsten.etherscan.io/",
+  [ChainId.ETH_MAINNET]: "https://etherscan.io",
+  [ChainId.ETH_ROPSTEN_TESTNET]: "https://ropsten.etherscan.io",
+  [ChainId.ETH_Rinkeby_TESTNET]: "https://rinkeby.etherscan.io",
 };
 
 export const BASE_NETWORK_CONFIG = {
@@ -100,7 +101,7 @@ export const BASE_URL = "https://www.kaco.finance";
 
 export const CONTRACT_ADDRESS = {
   [ChainId.ETH_MAINNET]: "",
-  [ChainId.SOLANA_MAINNET]: "0x6738204142cb9174046c98472f199675c31aa90d",
+  [ChainId.ETH_Rinkeby_TESTNET]: "0x6738204142cb9174046c98472f199675c31aa90d",
   [ChainId.ETH_ROPSTEN_TESTNET]: "0x6738204142cb9174046c98472f199675c31aa90d",
 };
 export const GAS_FEE = 3000;
