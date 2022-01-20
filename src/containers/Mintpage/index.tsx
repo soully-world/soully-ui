@@ -159,16 +159,16 @@ const Mintpage = () => {
     <MintpageWrapDiv preLink={preLink}>
       <MintpageInnerDiv>
         <MintpageInnerDivFl>
-          <MintpageTitle>Mint IS LIVE</MintpageTitle>
-          <MintpageSubTitle>Time to mint your soully today :)</MintpageSubTitle>
+          <MintpageTitle>Coming Soon</MintpageTitle>
+          <MintpageSubTitle>Launching on 26th January :)</MintpageSubTitle>
           <div className="inner-Rule">
             <MintpageContextTitle>Mint Rules:</MintpageContextTitle>
             <MintpageContextText>1. Connect your wallet with MetaMask </MintpageContextText>
             <MintpageContextText>2. Select your Mint Quantity </MintpageContextText>
             <MintpageContextText>3. Click on the button to mint your Soully! </MintpageContextText>
-            <MintpageContextText>4. Max 10 per transaction </MintpageContextText>
-            <MintpageContextText>5. Max 20 per wallet </MintpageContextText>
-            <MintpageContextText>6. No Bonding Curves </MintpageContextText>
+            <MintpageContextText>4. Max 3 per transaction </MintpageContextText>
+            <MintpageContextText>5. No Bonding Curves </MintpageContextText>
+            <MintpageContextText>6. Good luck! </MintpageContextText>
           </div>
         </MintpageInnerDivFl>
         <MintpageInnerDivFr>
