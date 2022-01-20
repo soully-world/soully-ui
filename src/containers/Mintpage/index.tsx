@@ -159,8 +159,8 @@ const Mintpage = () => {
     <MintpageWrapDiv preLink={preLink}>
       <MintpageInnerDiv>
         <MintpageInnerDivFl>
-          <MintpageTitle>Mint IS LIVE</MintpageTitle>
-          <MintpageSubTitle>Time to mint your soully today :)</MintpageSubTitle>
+          <MintpageTitle>Coming Soon</MintpageTitle>
+          <MintpageSubTitle>Launching on 26th January :)</MintpageSubTitle>
           <div className="inner-Rule">
             <MintpageContextTitle>Mint Rules:</MintpageContextTitle>
             <MintpageContextText>1. Connect your wallet with MetaMask </MintpageContextText>
