@@ -19,5 +19,6 @@ export function useContract(address: string | undefined, ABI: any, withSignerIfP
 }
 
 export function useSollyContract(address: string | undefined, withSignerIfPossible?: boolean): Contract | null {
+  console.log(address);
   return useContract(address, Solly_ABI, withSignerIfPossible);
 }
