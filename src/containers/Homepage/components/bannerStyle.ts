@@ -9,7 +9,7 @@ export const BannerWrapDiv = styled.div<{ preLink: string }>`
   padding-top: 100px;
   padding-bottom: 100px;
   position: relative;
-
+  overflow: hidden;
   ${({ theme }) => theme.mediaQueries.md} {
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
@@ -17,12 +17,19 @@ export const BannerWrapDiv = styled.div<{ preLink: string }>`
     background-size: 2560px 1100px;
     padding-bottom: 300px;
   }
-  video {
+  .videoWrap {
     position: absolute;
-    top: 150px;
-    left: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
-    width: 100%;
+    width: 4000px;
+    height: 100%;
+    video {
+      display: block;
+      margin: 0 auto;
+      height: 100%;
+    }
   }
 `;
 export const BannerInnerDiv = styled.div`
