@@ -54,13 +54,46 @@ const LongImgWrap = styled.div`
   }
 `;
 const SmallImgWrap = styled(Flex)`
-  overflow: hidden;
   margin-top: 30px;
 `;
-const SmallImgPicture = styled.picture`
+
+const SmallImgPicture = styled.div`
   width: 226px;
-  overflow: hidden;
   margin-right: 24px;
+  position: relative;
+  border: 1px solid #000;
+  picture {
+    position: relative;
+    z-index: 2;
+  }
+  &:hover{
+    border-color: 1px solid rgba(244,6, 56,0.5);
+    &:before,
+      &:after  {
+      content: "";
+      opacity: 1;
+    }
+  }
+  &:before {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: moveMiddle 1s infinite;
+    background-color:rgba(56,19,28,.5);
+}
+  }
+  &:after {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // border: 4px solid #2a0909;
+    animation: moveBiggest 1s infinite;
+    box-shadow: 0 0 4px #2a0909;
+  }
 `;
 const SoullyWorld = () => {
   return (
@@ -81,7 +114,9 @@ const SoullyWorld = () => {
           <SmallImgWrap>
             {[1, 2, 3, 4, 5].map((v) => (
               <SmallImgPicture key={v}>
-                <img src={`${preLink}/images/soullyworld/solly ${v}.jpg`} />
+                <picture>
+                  <img src={`${preLink}/images/soullyworld/solly ${v}.jpg`} />
+                </picture>
               </SmallImgPicture>
             ))}
           </SmallImgWrap>
