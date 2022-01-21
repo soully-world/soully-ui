@@ -53,8 +53,8 @@ const About = () => {
       </AboutInnerDiv>
       <PicWrap>
         <picture>
-          <source type="image/jpg" srcSet={`${preLink}/images/about/about_bg.jpg`} />
-          <img src={`${preLink}/images/about/about_bg.jpg`} />
+          <source type="image/jpg" srcSet={`${preLink}/images/about/about_bg.png`} />
+          <img src={`${preLink}/images/about/about_bg.png`} />
         </picture>
       </PicWrap>
     </AboutWrapDiv>
