@@ -6,7 +6,7 @@ import Menu from "./components/menu";
 import ShareLink from "components/SharaLink";
 import Logo from "./components/logo";
 import { Flex, LogoutIcon } from "uikit";
-import NoChain from "./components/noChain";
+// import NoChain from "./components/noChain";
 const HeaderWarp = styled.header`
   display: flex;
   justify-content: space-between;
@@ -304,7 +304,7 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
             </div>
           ) : null}
         </HeaderWarp>
-        <NoChain />
+        {/* <NoChain /> */}
       </>
     );
   }

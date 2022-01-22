@@ -19,21 +19,22 @@ const PicWrap = styled.div`
   height: 260px;
   overflow: hidden;
   width: 100%;
-  margin-top: 26px;
+  margin: 26px auto 0;
   img {
     width: auto;
     height: 264px;
+    display: inline-block;
   }
   ${({ theme }) => theme.mediaQueries.md} {
     height: 400px;
-    margin-top: 30px;
+    margin: 30px auto 0;
     img {
       height: 404px;
     }
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     height: 560px;
-    margin-top: 56px;
+    margin: 56px auto 0;
     img {
       height: 564px;
     }
