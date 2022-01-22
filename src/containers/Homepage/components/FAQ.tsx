@@ -48,40 +48,44 @@ const ContextText = styled(Text)`
 `;
 const FQAArr = [
   {
-    title: "What’s an NFT?",
+    title: "Is there a presale and how do you get it? If it's over, how did you go about it?",
     context:
-      "An NFT stands for “Non-fungible token” and is a fancy way of saying it’s a unique, one-of-a-kind digital item that users can buy, own, and trade. Some NFTs' main functions are to be digital art and look cool, some offer additional utility. Think of ours like a rare piece of art that can also act as a “members” card which gets you access to members-only perks.",
+      "- We have white list pre-sale;"
+      "- Access: reach a certain level in the dc and meet the conditions of the number of invitations"
+      "- We have invitation contest and level requirements, need to meet the conditions before mint"
+      "- After the presale, we will continue to expand our influence and have launched v2 version of nft",
   },
   {
-    title: "What is the total supply?",
-    context: "A total of 10,000 unique Soully NFTs will be created.",
-  },
-
-  {
-    title: "What Blockchain is the project hosted on?",
-    context: "Soully NFT is on the Ethereum Blockchain.",
+    title: "Why is SOULLY different from the 100 projects that launch everyday?",
+    context: "Although this may sound a bit arrogant, our projects are of a very high artistic level, each nft is a handmade 3D model that took a year to make alone, and a co-branded nft has been released with the top DEX spirit swap on the Fantom chain. we are not a knock-off plate of any one project and have been insisting on building an independent NFT based domain IP.",
   },
 
   {
-    title: "When will Soully NFT launch?",
-    context: "The pre-sale will launch on January, 26th at 2 PM UTC, and our public sale on January, 29th at 2 PM UTC",
+    title: "What are the benefits of holding soully?",
+    context: "After the sale, we will establish a soully-based treasury, similar to a DAO organization, with funds to expand the reach, such as: co-branding with top ip brands in other traditional industries; holders enjoy a share of the copyright revenue.",
   },
 
   {
-    title: "What inspired you to make the Soully NFT collection?",
+    title: "Are the team members completely anonymous?",
+    context: "All of our team members are anonymous except for the head of marketing. The reason for this anonymity is that we are all currently employed by companies in the traditional industry, and we have chosen to remain anonymous because of some contractual issues that exist in reality. However, there are still some of our partners who know who we really are.",
+  },
+
+  {
+    title: "Where do the team members come from and what have they done?",
     context:
-      'The design of Soully World is inspired in large part by the "spirit", the most direct remembrance of human history, and the hero is the highest pantheon of the human spirit. We have been attracted to superheroes and legends since childhood. Heroism is not shameful, it is the source of meaningful existence and spiritual strength for every person.',
+      'Our developers come from the blockchain space and have worked and are working on building technical frameworks for exchanges and blockchains, among other things.Our artists have supported brand design for Mercedes-Benz, Fendi and P&G.',
   },
 
   {
-    title: "How to obtain A Soully?",
+    title: "A year later, why would anyone buy his first nft when choosing soully?",
     context:
-      "Initially, Soully NFT’s will be minted (created and bought) through the website on the launch date. After mint, you will be able to buy a Soully NFT on secondary marketplaces such as OpenSea.",
+      "Because he learned about Soully not because of NFT, also because Soully wanted to learn about NFT.",
   },
 
   {
-    title: "Can I trade my Soully NFT?",
-    context: "Yes. You can buy/sell your NFT on secondary marketplaces such as OpenSea.",
+    title: "What happens if a sale fails? What is the number of sales needed to start the plan in the roadmap?",
+    context: "If we are unable to sell the current version of nft, we will go ahead and launch v2 and give a close equity relationship between the two. But a failed sale will definitely affect this process and take more time."
+              "We have to sell at least 30% before we can start achieving the goals in the roadmap.",
   },
 ];
 
