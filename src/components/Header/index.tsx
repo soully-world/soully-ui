@@ -6,6 +6,7 @@ import Menu from "./components/menu";
 import ShareLink from "components/SharaLink";
 import Logo from "./components/logo";
 import { Flex, LogoutIcon } from "uikit";
+import NoChain from "./components/noChain";
 const HeaderWarp = styled.header`
   display: flex;
   justify-content: space-between;
@@ -79,6 +80,7 @@ const HeaderWarp = styled.header`
     }
   }
 `;
+
 const FrLink = styled(Flex)`
   justify-content: space-between;
   align-items: center;
@@ -256,51 +258,54 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
     const { onKey, showModal } = this.state;
     const { account, logout } = this.props;
     return (
-      <HeaderWarp>
-        <Logo />
-        <div className="big">
-          <Menu LinkArray={LinkArray} onKey={onKey} changeOnKey={this.changeOnKey} />
-        </div>
-        <FrLink>
+      <>
+        <HeaderWarp>
+          <Logo />
           <div className="big">
-            <ShareLink mr="72px" />
+            <Menu LinkArray={LinkArray} onKey={onKey} changeOnKey={this.changeOnKey} />
           </div>
-
-          {account ? (
-            <Account onClick={logout}>
-              <span>{account}</span>
-              <LogoutIcon onClick={logout} />
-            </Account>
-          ) : (
-            <ConnectWalletButton />
-          )}
-          <div className="small">
-            <img
-              className="close"
-              onClick={() => {
-                const _show = !showModal;
-                if (_show) {
-                  document.body.style.overflow = "hidden";
-                } else {
-                  document.body.style.overflow = "initial";
-                }
-                this.setShowModal(_show);
-              }}
-              src={!showModal ? "/images/menu.png" : "/images/close.png"}
-              alt="logo"
-            />
-          </div>
-        </FrLink>
-
-        {showModal ? (
-          <div className="modal">
-            <div className="menu" onClick={() => this.setShowModal(!showModal)}>
-              <Menu LinkArray={LinkArray} onKey={onKey} changeOnKey={this.changeOnKey} />
+          <FrLink>
+            <div className="big">
               <ShareLink mr="72px" />
             </div>
-          </div>
-        ) : null}
-      </HeaderWarp>
+
+            {account ? (
+              <Account onClick={logout}>
+                <span>{account}</span>
+                <LogoutIcon onClick={logout} />
+              </Account>
+            ) : (
+              <ConnectWalletButton />
+            )}
+            <div className="small">
+              <img
+                className="close"
+                onClick={() => {
+                  const _show = !showModal;
+                  if (_show) {
+                    document.body.style.overflow = "hidden";
+                  } else {
+                    document.body.style.overflow = "initial";
+                  }
+                  this.setShowModal(_show);
+                }}
+                src={!showModal ? "/images/menu.png" : "/images/close.png"}
+                alt="logo"
+              />
+            </div>
+          </FrLink>
+
+          {showModal ? (
+            <div className="modal">
+              <div className="menu" onClick={() => this.setShowModal(!showModal)}>
+                <Menu LinkArray={LinkArray} onKey={onKey} changeOnKey={this.changeOnKey} />
+                <ShareLink mr="72px" />
+              </div>
+            </div>
+          ) : null}
+        </HeaderWarp>
+        <NoChain />
+      </>
     );
   }
 }

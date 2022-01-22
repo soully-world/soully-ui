@@ -219,7 +219,6 @@ const Mintpage = () => {
               <em>+</em>
             </i>
           </MintpageBtn>
-          {!connect ? <h6>Please change network to Ethereum. </h6> : null}
         </MintpageInnerDivFr>
       </MintpageInnerDiv>
       <div className="wrap-Rule">
