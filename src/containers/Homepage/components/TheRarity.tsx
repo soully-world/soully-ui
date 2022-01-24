@@ -212,28 +212,28 @@ const TheRarityArr = [
   {
     title: "The Pacifist",
     context:
-      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
+      "The Pacifist is Soully World's army of Rangers, aiming to settle disputes with moderate armed force, but of course this moderation is only their opinion.",
     img: "1-1",
     smallImg: 1,
   },
   {
     title: "Freewill Alliance",
     context:
-      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
+      "The Free Will Alliance is the race that loves interstellar travel the most and maintains its ancient preferences even after becoming Soully. But this resource war forced them to take up arms to protect the original free life.",
     img: "2-1",
     smallImg: 2,
   },
   {
     title: "Phantom Federation",
     context:
-      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
+      "“Warlike and disciplined troops”, this is the impression that Phantom Federation leaves on all races. Of course, having the second largest number of mines after Arora Federation is also their strength to build a strong army.",
     img: "3-1",
     smallImg: 3,
   },
   {
     title: "Arora",
     context:
-      "Each race can be considered as a legion with its own troop type, mechanical battle armor type, and code name",
+      "Arora Federal did not expect to be the target of all the races on Soully World, but the Arora metal given to them by the planet was enough for them to meet all the wars.",
     img: "4-1",
     smallImg: 4,
   },
