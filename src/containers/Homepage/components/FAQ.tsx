@@ -50,7 +50,7 @@ const FQAArr = [
   {
     title: "Is there a presale and how do you get it? If it's over, how did you go about it?",
     context: [
-      "- We have white list pre-sale;",
+      "- We have white list pre-sale",
       "- Access: reach a certain level in the dc and meet the conditions of the number of invitations",
       "- We have invitation contest and level requirements, need to meet the conditions before mint",
       "- After the presale, we will continue to expand our influence and have launched v2 version of nft",
@@ -80,7 +80,7 @@ const FQAArr = [
   {
     title: "Where do the team members come from and what have they done?",
     context: [
-      "Our developers come from the blockchain space and have worked and are working on building technical frameworks for exchanges and blockchains, among other things.Our artists have supported brand design for Mercedes-Benz, Fendi and P&G.",
+      "Our developers come from the blockchain space and have worked and are working on building technical frameworks for exchanges and blockchains, among other things. Our artists have supported brand design for Mercedes-Benz, Fendi and P&G.",
     ],
   },
 
@@ -92,7 +92,7 @@ const FQAArr = [
   {
     title: "What happens if a sale fails? What is the number of sales needed to start the plan in the roadmap?",
     context: [
-      "If we are unable to sell the current version of nft, we will go ahead and launch v2 and give a close equity relationship between the two. But a failed sale will definitely affect this process and take more time.",
+      "If we are unable to sell the current version of nft, we will go ahead and launch v2 and give a close equity relationship between the two. However, a failed sale will definitely affect this process and take more time.",
       "We have to sell at least 30% before we can start achieving the goals in the roadmap.",
     ],
   },
