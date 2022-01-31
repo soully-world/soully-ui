@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "./ERC721A.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
+import "./utils/Ownable.sol";
+import "./utils/ReentrancyGuard.sol";
+import "./utils/ERC721A.sol";
+import "./utils/Strings.sol";
 
 contract Azuki is Ownable, ERC721A, ReentrancyGuard {
     uint256 public immutable maxPerAddressDuringMint;
