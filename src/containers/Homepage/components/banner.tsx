@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Flex } from "uikit";
+import { useMatchBreakpoints } from "uikit";
 import { preLink } from "appConfig";
 import {
   BannerWrapDiv,
@@ -13,6 +13,7 @@ import {
 } from "./bannerStyle";
 const Banner = () => {
   const history = useHistory();
+  const { isXs, isSm } = useMatchBreakpoints();
   return (
     <BannerWrapDiv preLink={preLink} id="Home">
       <IframeWrap>
@@ -20,7 +21,7 @@ const Banner = () => {
           id="ytplayer"
           // type="text/html"
           width="100%"
-          height="1000px"
+          height={isXs || isSm ? "400" : "1000px"}
           // https://www.youtube.com/watch?v=mXgoJhJV-fg
           // ?autoplay=1&origin=https://www.soully.world/
           // ,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg
