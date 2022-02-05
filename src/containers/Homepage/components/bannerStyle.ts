@@ -3,7 +3,7 @@ import { Flex, Heading } from "uikit";
 import ContextText from "components/ContextText";
 export const IframeWrap = styled.div`
   margin-top: -100px;
-  height: 720px;
+  height: 920px;
   overflow: hidden;
 `;
 export const BannerWrapDiv = styled.div<{ preLink: string }>`

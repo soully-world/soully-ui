@@ -20,7 +20,7 @@ const Banner = () => {
           id="ytplayer"
           // type="text/html"
           width="100%"
-          height="800px"
+          height="1000px"
           // https://www.youtube.com/watch?v=mXgoJhJV-fg
           // ?autoplay=1&origin=https://www.soully.world/
           // ,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg
