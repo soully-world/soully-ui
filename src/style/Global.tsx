@@ -9,6 +9,9 @@ const GlobalStyle = createGlobalStyle`
 *{
   font-family: "Readex Pro", sans-serif;
 }
+.ytp-chrome-top.ytp-show-cards-title{
+display: none;
+}
 @keyframes marquee {
   0% {
       -webkit-transform: translateX(0);

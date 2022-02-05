@@ -4,17 +4,31 @@ import { Button, Flex } from "uikit";
 import { preLink } from "appConfig";
 import {
   BannerWrapDiv,
-  BannerBtn,
-  BannerContextText,
-  BannerInnerDiv,
-  BannerTitle,
-  BannerSubTitle,
+  IframeWrap,
+  // BannerBtn,
+  // BannerContextText,
+  // BannerInnerDiv,
+  // BannerTitle,
+  // BannerSubTitle,
 } from "./bannerStyle";
 const Banner = () => {
   const history = useHistory();
   return (
     <BannerWrapDiv preLink={preLink} id="Home">
-      <div className="videoWrap">
+      <IframeWrap>
+        <iframe
+          id="ytplayer"
+          // type="text/html"
+          width="100%"
+          height="800px"
+          // https://www.youtube.com/watch?v=mXgoJhJV-fg
+          // ?autoplay=1&origin=https://www.soully.world/
+          // ,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg
+          src="https://www.youtube.com/embed/mXgoJhJV-fg?color=white&mute=1&autoplay=1&controls=0&enablejsapi=1&loop=1&rel=0&playlist=mXgoJhJV-fg&origin=https://www.soully.world/"
+          frameBorder="0"
+        ></iframe>
+      </IframeWrap>
+      {/* <div className="videoWrap">
         <video
           muted
           autoPlay={true}
@@ -54,7 +68,7 @@ const Banner = () => {
             Join Our Discord
           </Button>
         </BannerBtn>
-      </BannerInnerDiv>
+      </BannerInnerDiv> */}
     </BannerWrapDiv>
   );
 };
