@@ -13,7 +13,7 @@ import {
 } from "./bannerStyle";
 const Banner = () => {
   const history = useHistory();
-  const { isXs, isSm } = useMatchBreakpoints();
+  const { isXs, isSm, isMobile, isMd } = useMatchBreakpoints();
   return (
     <BannerWrapDiv preLink={preLink} id="Home">
       <IframeWrap>
@@ -21,7 +21,7 @@ const Banner = () => {
           id="ytplayer"
           // type="text/html"
           width="100%"
-          height={isXs || isSm ? "400" : "1000px"}
+          height={isXs || isSm || isMobile ? "400" : isMd ? "600" : "1000px"}
           // https://www.youtube.com/watch?v=mXgoJhJV-fg
           // ?autoplay=1&origin=https://www.soully.world/
           // ,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg,mXgoJhJV-fg
