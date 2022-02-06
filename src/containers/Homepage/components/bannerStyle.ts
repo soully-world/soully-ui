@@ -3,14 +3,14 @@ import { Flex, Heading } from "uikit";
 import ContextText from "components/ContextText";
 export const IframeWrap = styled.div`
   margin-top: -100px;
-  // height: 320px;
-  // overflow: hidden;
-  // ${({ theme }) => theme.mediaQueries.sm} {
-  //   height: 420px;
-  // }
-  // ${({ theme }) => theme.mediaQueries.md} {
-  //   height: 920px;
-  // }
+  height: 320px;
+  overflow: hidden;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    height: 420px;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    height: 920px;
+  }
 `;
 export const BannerWrapDiv = styled.div<{ preLink: string }>`
   // background: url("${({ preLink }) => preLink}/images/banner/bg.png");
