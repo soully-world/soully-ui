@@ -11,6 +11,7 @@ import Layout from "layout/Layout";
 import { preLink } from "appConfig";
 const Homepage = React.lazy(() => import("containers/Homepage"));
 const MintPage = React.lazy(() => import("containers/Mintpage"));
+const KriyanSoully = React.lazy(() => import("containers/KriyanSoully"));
 const App = (): JSX.Element => {
   const { connector } = useWeb3React<Web3Provider>();
   const dispatch = useAppDispatch();
@@ -36,6 +37,9 @@ const App = (): JSX.Element => {
             </Route>
             <Route exact path={preLink + "/get"}>
               <MintPage />
+            </Route>
+            <Route exact path={preLink + "/Kriyan-Soully"}>
+              <KriyanSoully />
             </Route>
             <Redirect to={preLink + "/"} />
           </Switch>

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "containers/Header";
 import Footer from "containers/Footer";
-
+import ScrollTop from "./ScrollTop";
 // const Layout = ({ children }: { children: React.ReactNode }) => (
 //   <>
 //     <div className="animate animate__animated" data-animate="animate__fadeInDown">
@@ -34,6 +34,7 @@ export default class Layout extends React.Component {
     const { children } = this.props;
     return (
       <>
+        <ScrollTop />
         <div
           className="animate animate__animated"
           data-animate="animate__fadeInDown"
@@ -41,7 +42,7 @@ export default class Layout extends React.Component {
         >
           <Header />
         </div>
-        <main style={{ minHeight: "1200px" }}>{children}</main>
+        <main style={{ minHeight: "800px" }}>{children}</main>
         <Footer />
       </>
     );

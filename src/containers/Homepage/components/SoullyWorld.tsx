@@ -6,6 +6,8 @@ import InnerDiv from "./components/InnerDiv";
 import TitleH2 from "./components/TitleH2";
 import Point from "./components/Point";
 import { preLink } from "appConfig";
+import { Link } from "react-router-dom";
+import LinkSvg from "./svg/Link";
 const SoullyWorldWrapDiv = styled(InnerDiv)`
   padding: 0 20px;
   ${({ theme }) => theme.mediaQueries.md} {
@@ -13,6 +15,14 @@ const SoullyWorldWrapDiv = styled(InnerDiv)`
   }
 `;
 const UlWrap = styled.ul``;
+const LinkSvgStyle = styled(LinkSvg)`
+  width: 16px;
+  margin-left: 4px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: 30px;
+    margin-left: 8px;
+  }
+`;
 const TitleH3 = styled(Heading)`
   color: ${({ theme }) => `${theme.colors.primary}`};
   font-size: 20px;
@@ -164,7 +174,12 @@ const SoullyWorld = () => {
           </SoullyWorldContextText>
         </LiWrap>
         <LiWrap mb="0">
-          <TitleH3 color="primary">Spirit Swap & Soully World co-branded</TitleH3>
+          <Link to={preLink + "/Kriyan-Soully"}>
+            <TitleH3 color="primary">
+              Spirit Swap & Soully World co-branded
+              <LinkSvgStyle />
+            </TitleH3>
+          </Link>
           <SoullyWorldContextText
             // className="animate animate__slow animate__animated"
             data-animate="animate__fadeInRight"

@@ -145,12 +145,12 @@ const LiWrap = styled.li`
       }
     }
   }
-  &:last-child {
-    &:before,
-    &:after {
-      display: none;
-    }
-  }
+  // &:last-child {
+  //   &:before,
+  //   &:after {
+  //     display: none;
+  //   }
+  // }
   &:before {
     content: "";
     position: absolute;
