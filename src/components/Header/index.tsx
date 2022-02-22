@@ -126,7 +126,7 @@ const Account = styled.div`
     margin-left: 14px;
   }
 `;
-const LinkArray: string[] = ["About", "Mint", "Rarity", "Soully World", "Roadmap", "Team", "FAQ"];
+const LinkArray: string[] = ["About", "Rarity", "Soully World", "Roadmap", "Team", "FAQ"];
 
 interface IProps {
   propsOnKey?: string;
