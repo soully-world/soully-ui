@@ -173,7 +173,7 @@ const SoullyWorld = () => {
             mainly community members to emerge and decide the next phase together.
           </SoullyWorldContextText>
         </LiWrap>
-        <LiWrap mb="0">
+        <LiWrap mb="0" id="SoullyWorld">
           <Link to={preLink + "/Kriyan-Soully"}>
             <TitleH3 color="primary">
               Spirit Swap & Soully World co-branded
@@ -184,14 +184,14 @@ const SoullyWorld = () => {
             // className="animate animate__slow animate__animated"
             data-animate="animate__fadeInRight"
           >
-            Kriyan-Soully is an NFT collection jointly launched by 0xlambert and SpiritSwap, which is completely
-            handmade by 0xlambert and aims to inject more trendy elements and fresh creativity into SpiritSwap's brand
-            image.
+            Kriyan-Soully -- 0xLambert & Spirit Swap's joint NFT series
           </SoullyWorldContextText>
           <SoullyWorldContextText mt={40}>
-            They will be sold as an auction on Fantom, and those who acquire any one of the Kriyan-Soully will receive a
-            wealth of benefits granted by Soully World.(The auction has not started yet, please pay attention to
-            Twitter/Discord for more information)
+            Kriyan-Soully is a collection of 20 NFTs created by 0xLambert himself. these interesting Soullys have their
+            own exclusive names, lines and backstories, and more importantly they are also proof of interest in the
+            SoullyWorld NFT series. By holding a Kriyan-Soully you can enjoy a portion of the profits SoullyWorld
+            generates during the development of the project.（mint has not started yet, please follow Twitter/Discord
+            for more information)
           </SoullyWorldContextText>
           <SoullyWorldContextText
             // className="animate animate__slow animate__animated"

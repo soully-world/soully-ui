@@ -13,7 +13,7 @@ const HeaderLink = styled.div`
   height: 64px;
   font-weight: 800;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
+  white-space: nowrap;
   color: #fff;
   padding-right: 20px;
   margin: 0 3%;
@@ -25,14 +25,20 @@ const HeaderLink = styled.div`
     border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
   cursor: pointer;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.xl} {
     margin: 0 3%;
     border: none;
     &:first-child {
       border-top: none;
     }
     h2 {
-      font-size: 20px;
+      font-size: 18px;
+    }
+  }
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    margin: 0 1%;
+    h2 {
+      font-size: 18px;
     }
   }
 `;

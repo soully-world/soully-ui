@@ -126,7 +126,7 @@ const Account = styled.div`
     margin-left: 14px;
   }
 `;
-const LinkArray: string[] = ["About", "Mint", "Rarity", "Roadmap", "Team", "FAQ"];
+const LinkArray: string[] = ["About", "Mint", "Rarity", "Soully World", "Roadmap", "Team", "FAQ"];
 
 interface IProps {
   propsOnKey?: string;
@@ -241,7 +241,8 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
       case "Roadmap":
       case "Team":
       case "FAQ":
-        window.location.href = `/#${_key}`;
+      case "SoullyWorld":
+        window.location.href = `/#${_key.replaceAll(" ", "")}`;
         break;
       case "Mint":
         window.location.href = "/get";
@@ -266,7 +267,7 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
           </div>
           <FrLink>
             <div className="big">
-              <ShareLink mr="72px" />
+              <ShareLink mr="12px" />
             </div>
 
             {account ? (
@@ -299,7 +300,7 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
             <div className="modal">
               <div className="menu" onClick={() => this.setShowModal(!showModal)}>
                 <Menu LinkArray={LinkArray} onKey={onKey} changeOnKey={this.changeOnKey} />
-                <ShareLink mr="72px" />
+                <ShareLink mr="12px" />
               </div>
             </div>
           ) : null}

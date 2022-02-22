@@ -25,10 +25,14 @@ const Banner = memo(() => {
   const [showMp4, setShowMp4] = useState(false);
   useEffect(() => {
     isLoad.current = false;
-    document.getElementById("ytplayer").onload = () => {
-      isLoad.current = true;
-      setShowMp4(false);
-    };
+    try {
+      document.getElementById("ytplayer").onload = () => {
+        isLoad.current = true;
+        setShowMp4(false);
+      };
+    } catch (e) {
+      setShowMp4(true);
+    }
   }, []);
   useEffect(() => {
     if (isLoad.current) {

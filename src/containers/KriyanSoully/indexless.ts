@@ -8,8 +8,14 @@ export const KriyanSoullyStyle = styled.div`
     padding-top: 100px;
     position: relative;
     ${({ theme }) => theme.mediaQueries.md} {
-      background-size: 100%;
       padding-top: 200px;
+    }
+    ${({ theme }) => theme.mediaQueries.xl} {
+      background-size: 1300px 800px;
+    }
+
+    ${({ theme }) => theme.mediaQueries.xxl} {
+      background-size: 100%;
     }
     .logo {
       display: block;
