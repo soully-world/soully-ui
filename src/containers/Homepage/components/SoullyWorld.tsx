@@ -176,7 +176,7 @@ const SoullyWorld = () => {
         <LiWrap mb="0">
           <Link to={preLink + "/Kriyan-Soully"}>
             <TitleH3 color="primary">
-            Kriyan-Soully
+              Spirit Swap & Soully World co-branded
               <LinkSvgStyle />
             </TitleH3>
           </Link>
