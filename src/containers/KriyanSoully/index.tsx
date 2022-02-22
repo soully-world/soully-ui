@@ -28,11 +28,15 @@ function KriyanSoully() {
           </li>
         </ul>
         <h3>Kriyan-Soully</h3>
+        <p>Kriyan-Soully is a collection of 20 NFTs created by 0xLambert himself. </p>
+
+        <p>These interesting Soullys have their own exclusive names, lines and backstories,</p>
+
+        <p>and more importantly they are also proof of interest in the SoullyWorld NFT series. </p>
+
         <p>
-          Kriyan-Soully is a collection of 20 NFTs created by 0xLambert himself. these interesting Soullys have their
-          own exclusive names, lines and backstories, and more importantly they are also proof of interest in the
-          SoullyWorld NFT series. By holding a Kriyan-Soully you can enjoy a portion of the profits SoullyWorld
-          generates during the development of the project.
+          By holding a Kriyan-Soully you can enjoy a portion of the profits SoullyWorld generates during the development
+          of the project.
         </p>
       </div>
     </KriyanSoullyStyle>
