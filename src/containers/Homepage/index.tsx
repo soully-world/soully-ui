@@ -7,6 +7,7 @@ import CommunityDrivenRoadmap from "./components/CommunityDrivenRoadmap";
 import FAQ from "./components/FAQ";
 import MeetOurTeam from "./components/MeetOurTeam";
 import WagmiSoullyBanner from "components/WagmiSoullyBanner";
+import Partners from "./components/Partners";
 
 export default class HomeIndex extends React.Component {
   componentDidMount() {
@@ -46,6 +47,9 @@ export default class HomeIndex extends React.Component {
         </div>
         <div className="animate animate__animated" data-animate="animate__fadeInUp">
           <MeetOurTeam />
+        </div>
+        <div className="animate animate__animated" data-animate="animate__fadeInUp">
+          <Partners />
         </div>
       </>
     );
