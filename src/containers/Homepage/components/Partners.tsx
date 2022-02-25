@@ -80,21 +80,22 @@ const UlWrap = styled.ul`
   justify-content: space-between;
   align-items: start;
   flex-flow: wrap;
+  padding-top: 60px;
   padding-bottom: 60px;
   padding-left: 20px;
   padding-right: 20px;
   ${({ theme }) => theme.mediaQueries.md} {
     padding-right: 0;
+    padding-top: 100px;
     padding-bottom: 200px;
   }
 `;
 const LiWrap = styled.li`
   width: 33%;
   padding: 2px;
-  margin-bottom: 4px;
+  margin-bottom: -2px;
   ${({ theme }) => theme.mediaQueries.sm} {
     width: 33%;
-    margin-bottom: 4px;
   }
   ${({ theme }) => theme.mediaQueries.md} {
     width: 16%;

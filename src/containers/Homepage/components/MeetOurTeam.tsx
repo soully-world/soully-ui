@@ -15,7 +15,6 @@ const UlWrap = styled.ul`
   padding-right: 20px;
   ${({ theme }) => theme.mediaQueries.md} {
     padding-right: 0;
-    padding-bottom: 200px;
   }
 `;
 const LiWrap = styled.li`
