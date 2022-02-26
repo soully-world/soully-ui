@@ -10,7 +10,7 @@ const UlWrap = styled.ul`
   justify-content: space-between;
   align-items: start;
   flex-flow: wrap;
-  padding-bottom: 60px;
+  padding-bottom: 0;
   padding-left: 20px;
   padding-right: 20px;
   ${({ theme }) => theme.mediaQueries.md} {

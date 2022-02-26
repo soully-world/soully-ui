@@ -13,9 +13,9 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
     using Counters for Counters.Counter;
 
     uint256 public price = 60000000000000000; // 0.06
-    uint256 public constant maxPurchase = 3;
+    uint256 public constant maxPurchase = 5;
     uint256 public constant MAX_Soully = 10000;
-    uint256 private constant MAX_Vip_Mint = 10;
+    uint256 private constant MAX_Vip_Mint = 5;
     string private _baseTokenURI;
     uint256 private _reserved = 10;
 

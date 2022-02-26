@@ -1,8 +1,7 @@
 import { preLink } from "appConfig";
 import TitleH2 from "./components/TitleH2";
 import styled from "styled-components";
-import { Text } from "uikit";
-import InnerDiv, { InnerMax } from "./components/InnerDiv";
+import { InnerMax } from "./components/InnerDiv";
 
 const partnersArr = [
   {
@@ -14,20 +13,21 @@ const partnersArr = [
     image: "02.png",
   },
   {
-    name: "@cryptorussians",
-    image: "03.png",
+    name: "@K18NftClub",
+    image: "K18NftClub.png",
   },
   {
     name: "@SlothverseNFT",
     image: "04.png",
   },
+
   {
-    name: "@bitfrenchies",
-    image: "05.png",
+    name: "@Xinyii.eth",
+    image: "Xinyii.eth.png",
   },
   {
-    name: "@spacey2025",
-    image: "06.png",
+    name: "@MetaC1ub",
+    image: "MetaC1ub.png",
   },
   {
     name: "@TheDefiantsNFT",
@@ -53,11 +53,38 @@ const partnersArr = [
     name: "@bitfrenchies",
     image: "12.png",
   },
+
+  {
+    name: "@NFT_cyberpunk",
+    image: "NFT_cyberpunk.png",
+  },
+  {
+    name: "@longkuiclub",
+    image: "longkuiclub.png",
+  },
+  {
+    name: "@Coinhub_Wallet",
+    image: "Coinhub_Wallet.png",
+  },
+  {
+    name: "@spacey2025",
+    image: "06.png",
+  },
+  {
+    name: "@TimeVillainsNFT",
+    image: "TimeVillainsNFT.png",
+  },
+  {
+    name: "@BrainDanceNFT",
+    image: "BrainDanceNFT.png",
+  },
 ];
 const Partners = () => {
   return (
     <PartnerInnerDiv id="Team">
-      <TitleH2 position="center">Soully Partners</TitleH2>
+      <TitleH2 position="center" mt={120}>
+        Soully Partners
+      </TitleH2>
       <UlWrap>
         {partnersArr.map((v: { image: string; name: string }, index: number) => {
           return (
@@ -86,7 +113,7 @@ const UlWrap = styled.ul`
   padding-right: 20px;
   ${({ theme }) => theme.mediaQueries.md} {
     padding-right: 0;
-    padding-top: 100px;
+    padding-top: 80px;
     padding-bottom: 200px;
   }
 `;
@@ -105,7 +132,13 @@ const LiWrap = styled.li`
   &:nth-child(3),
   &:nth-child(4),
   &:nth-child(5),
-  &:nth-child(6) {
+  &:nth-child(6),
+  &:nth-child(13),
+  &:nth-child(14),
+  &:nth-child(15),
+  &:nth-child(16),
+  &:nth-child(17),
+  &:nth-child(18) {
     background: linear-gradient(90deg, #f40638 0%, rgba(36, 17, 7, 0) 100%);
   }
 

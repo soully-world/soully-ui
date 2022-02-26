@@ -26,16 +26,16 @@ import {
 } from "./Mintpage";
 
 const Mintpage = () => {
-  const { toastSuccess, toastError } = useToast();
+  const { toastSuccess, toastError, toastWarning } = useToast();
   const contract = useSollyContract(CONTRACT_ADDRESS[adminChainId]);
   const balance: number = useBalance();
   const [vipSaleReserved, setVipSaleReserved] = useState<number>();
   const [state, setState] = useState<CONTRACT_STATE>(CONTRACT_STATE.paused);
-  const [maxPurchase] = useState<number>(3);
+  const [maxPurchase] = useState<number>(5);
   const [total, setTotal] = useState<number>(0);
   const [price, setPrice] = useState<number>(0.06);
   const [totalCost, setTotalCost] = useState(0.06);
-  const [count, setCount] = useState<number>(1); // 要mint的个数
+  const [count, setCount] = useState<number>(5); // 要mint的个数
   const { account, chainId } = useWeb3React();
   const [connect, setConnect] = useState(false);
   const handleUpdateState = useCallback(() => {
@@ -72,11 +72,11 @@ const Mintpage = () => {
     // });
   }, [contract]);
   useEffect(() => {
-    console.log(adminChainId, chainId);
+    // console.log(adminChainId, chainId);
     if (adminChainId !== chainId) {
       setConnect(false);
     } else {
-      console.log("eeeee");
+      // console.log("eeeee");
       setConnect(true);
       if (contract) {
         handleUpdateState();
@@ -154,7 +154,7 @@ const Mintpage = () => {
         toastError(err?.data?.message || "Mint Error!");
       });
   }, [totalCost, account]);
-  console.log(connect);
+  // console.log(connect);
   return (
     <MintpageWrapDiv preLink={preLink}>
       <MintpageInnerDiv>
@@ -208,10 +208,14 @@ const Mintpage = () => {
                 if (state === 2) {
                   if (count < maxPurchase) {
                     setCount(count + 1);
+                  } else {
+                    toastWarning("Exceeding the limit Purchase");
                   }
                 } else if (state === 1) {
                   if (count < vipSaleReserved) {
                     setCount(count + 1);
+                  } else {
+                    toastWarning("Exceeding the limit Reserved");
                   }
                 }
               }}

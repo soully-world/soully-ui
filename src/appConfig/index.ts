@@ -37,5 +37,5 @@ export const LinkArr = [
 ];
 export const CONTRACT_ADDRESS = {
   [ChainId.ETH_MAINNET]: "",
-  [ChainId.ETH_ROPSTEN_TESTNET]: "0x40822E097CE773D42dB371BdC0Ae802331BC9912",
+  [ChainId.ETH_ROPSTEN_TESTNET]: "0xf5c8d1991c9872fcd2e1e925700ec7a91dcb8ccd",
 };
