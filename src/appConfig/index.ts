@@ -35,7 +35,3 @@ export const LinkArr = [
     alt: "gitbook",
   },
 ];
-export const CONTRACT_ADDRESS = {
-  [ChainId.ETH_MAINNET]: "",
-  [ChainId.ETH_ROPSTEN_TESTNET]: "0xf5c8d1991c9872fcd2e1e925700ec7a91dcb8ccd",
-};
