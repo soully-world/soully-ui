@@ -117,8 +117,8 @@ const SoullyWorld = () => {
             data-animate="animate__fadeInRight"
           >
             Soully is a 3D NFT artwork hand-painted by 0xLambert, waiting for any dreamer with a whimsical mind to give
-            it a soul, with a total of 6666 pieces. Each Soully is an original design that not only has its own
-            colors, but will also appear in the SoullyWorld meta-universe in the future, giving each Soully owner the
+            it a soul, with a total of 6666 pieces. Each Soully is an original design that not only has its own colors,
+            but will also appear in the SoullyWorld meta-universe in the future, giving each Soully owner the
             opportunity to personally give them attributes and individual stories.
           </SoullyWorldContextText>
           <SmallImgWrap>
