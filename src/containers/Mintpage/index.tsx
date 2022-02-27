@@ -65,10 +65,6 @@ const Mintpage = () => {
 
         contract?.walletOfOwner(account).then((data: BN[]) => {
           if (data && data.length) {
-            if (_state.toNumber() === 1) {
-              setCount(reserved.toNumber() - data.length);
-              setVipSaleReserved(reserved.toNumber() - data.length);
-            }
             setVipAlreadySaleReserved(data.length);
           }
         });
@@ -152,8 +148,8 @@ const Mintpage = () => {
     contract
       .preSaleMint(count, { from: account, value: parseEther(`${totalCost}`) })
       .then((result) => {
-        if (result) {
-          toastSuccess("Congrats! Mint successfully!", <ToastDescriptionWithTx txHash={result} />);
+        if (result && result.hash) {
+          toastSuccess("Congrats! Mint successfully!", <ToastDescriptionWithTx txHash={result.hash} />);
         }
       })
       .catch((err) => {
