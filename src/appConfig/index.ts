@@ -6,7 +6,7 @@ export enum CONTRACT_STATE {
   live,
   finish,
 }
-export const MAX_Soully = 10000;
+export const MAX_Soully = 6666;
 
 export const LinkArr = [
   {
