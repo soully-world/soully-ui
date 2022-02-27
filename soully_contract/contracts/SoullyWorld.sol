@@ -2,30 +2,23 @@
 
 pragma solidity ^0.8.0;
 
-import "./utils/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./utils/ERC721A.sol";
-import "./utils/Strings.sol";
-import "./utils/ReentrancyGuard.sol";
-import "./utils/Counters.sol";
 
-contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
-    using Strings for uint256;
-    using Counters for Counters.Counter;
-
+contract SoullyWorld is Ownable, ERC721A {
     uint256 public price = 60000000000000000; // 0.06
-    uint256 public constant maxPurchase = 5;
-    uint256 public constant MAX_Soully = 10000;
+    uint256 public immutable MAX_Soully;
+    uint256 public immutable maxPurchase;
     uint256 private constant MAX_Vip_Mint = 5;
     string private _baseTokenURI;
-    uint256 private _reserved = 10;
+    uint256 private _reserved = 5;
 
     // 0 = paused, 1 = vip, 2 = live
     uint256 public saleState = 0;
     mapping(address => uint256) public vipSaleReserved;
 
-    Counters.Counter private _tokenIdTracker;
-    mapping(uint256 => uint256) public tokenIdKeyMap;
-    mapping(uint256 => uint256) public tokenRomdomKeyMap;
+    event Minted(address minter, uint256 amount);
+    event ReservedToken(address from, address to, uint256 num);
 
     /**
      * @dev
@@ -34,11 +27,13 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
      */
     constructor(
         uint256 _maxBatchSize,
-        uint256 _collectionSize,
+        uint256 _maxSupply,
         string memory baseTokenURI
-    ) ERC721A("Soully World", "Soully", _maxBatchSize, _collectionSize) {
+    ) ERC721A("Soully World", "Soully", _maxBatchSize, _maxSupply) {
         _baseTokenURI = baseTokenURI;
         vipSaleReserved[msg.sender] = MAX_Vip_Mint;
+        MAX_Soully = _maxSupply;
+        maxPurchase = _maxBatchSize;
     }
 
     function setVipSaleWhitelist(address[] memory _a) public virtual onlyOwner {
@@ -55,60 +50,41 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
         require(num <= reservedAmt, "Soully:: Can't mint more than reserved");
         require(supply + num <= MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
         require(msg.value >= price * num, "Soully:: Ether sent is not correct");
-        vipSaleReserved[msg.sender] = reservedAmt - num;
-        for (uint256 i; i < num; i++) {
-            uint256 R = _random(__random());
-            tokenIdKeyMap[_tokenIdTracker.current()] = R;
-            tokenRomdomKeyMap[R] = _tokenIdTracker.current();
-            _tokenIdTracker.increment();
-            _safeMint(msg.sender, R);
-        }
+
+        _safeMint(msg.sender, num);
+        emit Minted(msg.sender, num);
     }
 
     function mint(address to, uint256 num) public payable virtual {
         require(to != address(0x0), "Soully:: address err");
-        uint256 supply = totalSupply();
         require(saleState > 1, "Soully:: Sale not live");
         require(num > 0, "Soully:: Cannot buy 0");
         require(num <= maxPurchase, "Soully:: Exceeds max number of Soully World in one transaction");
+        uint256 supply = totalSupply();
         require(supply + num < MAX_Soully, "Soully:: Purchase would exceed max supply of Soully World");
         require(price * num <= msg.value, "Soully:: Ether value sent is not correct");
 
-        for (uint256 i; i < num; i++) {
-            uint256 R = _random(__random());
-            tokenIdKeyMap[_tokenIdTracker.current()] = R;
-            tokenRomdomKeyMap[R] = _tokenIdTracker.current();
-            _tokenIdTracker.increment();
-            _safeMint(to, R);
-        }
+        _safeMint(to, num);
+
+        emit Minted(to, num);
     }
 
     function reserveSoully(address to, uint256 num) external onlyOwner {
+        require(to != address(0), "Soully: Zero address");
+        require(num > 0, "Soully: Invalid amount");
         require(num <= _reserved, "Soully: Exceeds reserved Soully supply");
-
         uint256 supply = totalSupply();
         require(supply + num < MAX_Soully, "Soully:: Purchase would exceed max supply of Soully World");
 
-        for (uint256 i; i < num; i++) {
-            uint256 R = _random(__random());
-            tokenIdKeyMap[_tokenIdTracker.current()] = R;
-            tokenRomdomKeyMap[R] = _tokenIdTracker.current();
-            _tokenIdTracker.increment();
-            _safeMint(to, R);
+        uint256 multiple = num / maxBatchSize;
+        for (uint256 i = 0; i < multiple; i++) {
+            _safeMint(to, maxBatchSize);
         }
-    }
-
-    function _random(uint256 _r) private view returns (uint256) {
-        if (_exists(tokenRomdomKeyMap[_r])) {
-            _random(_r + 1);
+        uint256 remainder = num % maxBatchSize;
+        if (remainder != 0) {
+            _safeMint(to, remainder);
         }
-        return _r;
-    }
-
-    function __random() private view returns (uint256) {
-        return
-            uint256(keccak256(abi.encodePacked(block.difficulty, block.timestamp, _tokenIdTracker.current()))) %
-            MAX_Soully;
+        emit ReservedToken(msg.sender, to, num);
     }
 
     function setSaleState(uint256 _saleState) public virtual onlyOwner {
@@ -134,6 +110,14 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
         require(payable(msg.sender).send(address(this).balance));
     }
 
+    function getOwnershipData(uint256 _tokenId) external view returns (TokenOwnership memory) {
+        return ownershipOf(_tokenId);
+    }
+
+    function setOwnersExplicit(uint256 quantity) external onlyOwner {
+        _setOwnersExplicit(quantity);
+    }
+
     function walletOfOwner(address _owner) public view returns (uint256[] memory) {
         uint256 tokenCount = balanceOf(_owner);
 
@@ -151,28 +135,7 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
 
     function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
         require(_exists(_tokenId), "Soully:: token is not mint");
-        return string(abi.encodePacked(_baseTokenURI, _tokenId.toString()));
-    }
-
-    function uint2str(uint256 _i) internal pure returns (string memory _uintAsString) {
-        if (_i == 0) {
-            return "0";
-        }
-        uint256 j = _i;
-        uint256 len;
-        while (j != 0) {
-            len++;
-            j /= 10;
-        }
-        bytes memory bstr = new bytes(len);
-        uint256 k = len;
-        while (_i != 0) {
-            k = k - 1;
-            uint8 temp = (48 + uint8(_i - (_i / 10) * 10));
-            bytes1 b1 = bytes1(temp);
-            bstr[k] = b1;
-            _i /= 10;
-        }
-        return string(bstr);
+        string memory uri = super.tokenURI(_tokenId);
+        return bytes(uri).length > 0 ? uri : "";
     }
 }

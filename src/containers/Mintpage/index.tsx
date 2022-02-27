@@ -30,6 +30,7 @@ const Mintpage = () => {
   const contract = useSollyContract(CONTRACT_ADDRESS[adminChainId]);
   const balance: number = useBalance();
   const [vipSaleReserved, setVipSaleReserved] = useState<number>();
+  const [vipAlreadySaleReserved, setVipAlreadySaleReserved] = useState<number>(0);
   const [state, setState] = useState<CONTRACT_STATE>(CONTRACT_STATE.paused);
   const [maxPurchase] = useState<number>(5);
   const [total, setTotal] = useState<number>(0);
@@ -64,8 +65,16 @@ const Mintpage = () => {
     contract?.vipSaleReserved(account).then((reserved: BN) => {
       // vip用户能够领取多少个
       setVipSaleReserved(reserved.toNumber());
+      // 如果可领取数为 < maxPurchase
+      if (reserved.toNumber() < maxPurchase) {
+        setCount(reserved.toNumber());
+      }
     });
-
+    contract?.walletOfOwner(account).then((data: BN[]) => {
+      if (data && data.length) {
+        setVipAlreadySaleReserved(data.length);
+      }
+    });
     // contract?.maxPurchase().then((_maxPurchase: BN) => {
     //   // 非vip单次能够领取个数
     //   setMaxPurchase(_maxPurchase.toNumber());
@@ -118,7 +127,12 @@ const Mintpage = () => {
             toastError(`You can currently purchase ${vipSaleReserved} ETH`);
           }
         } else {
-          toastError("No permission!");
+          // todo 已经有5个  在预售
+          if (vipAlreadySaleReserved > vipSaleReserved) {
+            toastError("Sorry, you’ve reached the maximum limit!");
+          } else {
+            toastError("Sorry, you aren’t on the whitelist!");
+          }
           return false;
         }
       }
@@ -131,7 +145,7 @@ const Mintpage = () => {
     contract
       .preSaleMint(count, { from: account, value: parseEther(`${totalCost}`) })
       .then((result) => {
-        toastSuccess("mint successful!", <ToastDescriptionWithTx txHash={result} />);
+        toastSuccess("Congrats! Mint successfully!", <ToastDescriptionWithTx txHash={result} />);
       })
       .catch((err) => {
         toastError(err?.data?.message || "Mint Error!");
@@ -142,9 +156,9 @@ const Mintpage = () => {
       .mint(account, count, { from: account, value: parseEther(`${totalCost.toFixed(2)}`) })
       .then((result) => {
         if (result && result.hash) {
-          toastSuccess("mint successful!", <ToastDescriptionWithTx txHash={`${result.hash}`} />);
+          toastSuccess("Congrats! Mint successfully!", <ToastDescriptionWithTx txHash={`${result.hash}`} />);
         } else {
-          toastSuccess("mint successful!");
+          toastSuccess("Congrats! Mint successfully!");
         }
       })
       .catch((err) => {
@@ -193,6 +207,10 @@ const Mintpage = () => {
           <MintpageBtn>
             <i
               onClick={() => {
+                if (!account) {
+                  toastWarning("Please connect the wallet first");
+                  return;
+                }
                 if (count > 1) {
                   setCount(count - 1);
                 }
@@ -205,17 +223,25 @@ const Mintpage = () => {
             </Button>
             <i
               onClick={() => {
+                if (!account) {
+                  toastWarning("Please connect the wallet first");
+                  return;
+                }
                 if (state === 2) {
                   if (count < maxPurchase) {
                     setCount(count + 1);
                   } else {
-                    toastWarning("Exceeding the limit Purchase");
+                    toastWarning("Sorry, you’ve reached the maximum limit!");
                   }
                 } else if (state === 1) {
                   if (count < vipSaleReserved) {
                     setCount(count + 1);
                   } else {
-                    toastWarning("Exceeding the limit Reserved");
+                    if (vipAlreadySaleReserved > vipSaleReserved) {
+                      toastWarning("Sorry, you’ve reached the maximum limit!");
+                    } else {
+                      toastWarning("Sorry, you aren’t on the whitelist!");
+                    }
                   }
                 }
               }}

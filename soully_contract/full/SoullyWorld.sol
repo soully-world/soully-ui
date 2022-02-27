@@ -1,8 +1,8 @@
-// File: contracts/utils/Context.sol
+// File: @openzeppelin/contracts/utils/Context.sol
 
 pragma solidity ^0.8.0;
 
-/*
+/**
  * @dev Provides information about the current execution context, including the
  * sender of the transaction and its data. While these are generally available
  * via msg.sender and msg.data, they should not be accessed in such a direct
@@ -22,7 +22,7 @@ abstract contract Context {
     }
 }
 
-// File: contracts/utils/Ownable.sol
+// File: @openzeppelin/contracts/access/Ownable.sol
 
 pragma solidity ^0.8.0;
 
@@ -93,7 +93,7 @@ abstract contract Ownable is Context {
     }
 }
 
-// File: contracts/utils/IERC165.sol
+// File: @openzeppelin/contracts/utils/introspection/IERC165.sol
 
 pragma solidity ^0.8.0;
 
@@ -118,7 +118,7 @@ interface IERC165 {
     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 }
 
-// File: contracts/utils/IERC721.sol
+// File: @openzeppelin/contracts/token/ERC721/IERC721.sol
 
 pragma solidity ^0.8.0;
 
@@ -260,7 +260,7 @@ interface IERC721 is IERC165 {
     ) external;
 }
 
-// File: contracts/utils/IERC721Receiver.sol
+// File: @openzeppelin/contracts/token/ERC721/IERC721Receiver.sol
 
 pragma solidity ^0.8.0;
 
@@ -287,7 +287,7 @@ interface IERC721Receiver {
     ) external returns (bytes4);
 }
 
-// File: contracts/utils/IERC721Metadata.sol
+// File: @openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol
 
 pragma solidity ^0.8.0;
 
@@ -313,7 +313,7 @@ interface IERC721Metadata is IERC721 {
     function tokenURI(uint256 tokenId) external view returns (string memory);
 }
 
-// File: contracts/utils/IERC721Enumerable.sol
+// File: @openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol
 
 pragma solidity ^0.8.0;
 
@@ -341,7 +341,7 @@ interface IERC721Enumerable is IERC721 {
     function tokenByIndex(uint256 index) external view returns (uint256);
 }
 
-// File: contracts/utils/Address.sol
+// File: @openzeppelin/contracts/utils/Address.sol
 
 pragma solidity ^0.8.0;
 
@@ -472,7 +472,7 @@ library Address {
         require(isContract(target), "Address: call to non-contract");
 
         (bool success, bytes memory returndata) = target.call{value: value}(data);
-        return _verifyCallResult(success, returndata, errorMessage);
+        return verifyCallResult(success, returndata, errorMessage);
     }
 
     /**
@@ -499,7 +499,7 @@ library Address {
         require(isContract(target), "Address: static call to non-contract");
 
         (bool success, bytes memory returndata) = target.staticcall(data);
-        return _verifyCallResult(success, returndata, errorMessage);
+        return verifyCallResult(success, returndata, errorMessage);
     }
 
     /**
@@ -526,14 +526,20 @@ library Address {
         require(isContract(target), "Address: delegate call to non-contract");
 
         (bool success, bytes memory returndata) = target.delegatecall(data);
-        return _verifyCallResult(success, returndata, errorMessage);
+        return verifyCallResult(success, returndata, errorMessage);
     }
 
-    function _verifyCallResult(
+    /**
+     * @dev Tool to verifies that a low level call was successful, and revert if it wasn't, either by bubbling the
+     * revert reason using the provided one.
+     *
+     * _Available since v4.3._
+     */
+    function verifyCallResult(
         bool success,
         bytes memory returndata,
         string memory errorMessage
-    ) private pure returns (bytes memory) {
+    ) internal pure returns (bytes memory) {
         if (success) {
             return returndata;
         } else {
@@ -552,7 +558,7 @@ library Address {
     }
 }
 
-// File: contracts/utils/Strings.sol
+// File: @openzeppelin/contracts/utils/Strings.sol
 
 pragma solidity ^0.8.0;
 
@@ -619,7 +625,7 @@ library Strings {
     }
 }
 
-// File: contracts/utils/ERC165.sol
+// File: @openzeppelin/contracts/utils/introspection/ERC165.sol
 
 pragma solidity ^0.8.0;
 
@@ -1145,139 +1151,26 @@ contract ERC721A is Context, ERC165, IERC721, IERC721Metadata, IERC721Enumerable
     ) internal virtual {}
 }
 
-// File: contracts/utils/ReentrancyGuard.sol
-
-pragma solidity ^0.8.0;
-
-/**
- * @dev Contract module that helps prevent reentrant calls to a function.
- *
- * Inheriting from `ReentrancyGuard` will make the {nonReentrant} modifier
- * available, which can be applied to functions to make sure there are no nested
- * (reentrant) calls to them.
- *
- * Note that because there is a single `nonReentrant` guard, functions marked as
- * `nonReentrant` may not call one another. This can be worked around by making
- * those functions `private`, and then adding `external` `nonReentrant` entry
- * points to them.
- *
- * TIP: If you would like to learn more about reentrancy and alternative ways
- * to protect against it, check out our blog post
- * https://blog.openzeppelin.com/reentrancy-after-istanbul/[Reentrancy After Istanbul].
- */
-abstract contract ReentrancyGuard {
-    // Booleans are more expensive than uint256 or any type that takes up a full
-    // word because each write operation emits an extra SLOAD to first read the
-    // slot's contents, replace the bits taken up by the boolean, and then write
-    // back. This is the compiler's defense against contract upgrades and
-    // pointer aliasing, and it cannot be disabled.
-
-    // The values being non-zero value makes deployment a bit more expensive,
-    // but in exchange the refund on every call to nonReentrant will be lower in
-    // amount. Since refunds are capped to a percentage of the total
-    // transaction's gas, it is best to keep them low in cases like this one, to
-    // increase the likelihood of the full refund coming into effect.
-    uint256 private constant _NOT_ENTERED = 1;
-    uint256 private constant _ENTERED = 2;
-
-    uint256 private _status;
-
-    constructor() {
-        _status = _NOT_ENTERED;
-    }
-
-    /**
-     * @dev Prevents a contract from calling itself, directly or indirectly.
-     * Calling a `nonReentrant` function from another `nonReentrant`
-     * function is not supported. It is possible to prevent this from happening
-     * by making the `nonReentrant` function external, and make it call a
-     * `private` function that does the actual work.
-     */
-    modifier nonReentrant() {
-        // On the first call to nonReentrant, _notEntered will be true
-        require(_status != _ENTERED, "ReentrancyGuard: reentrant call");
-
-        // Any calls to nonReentrant after this point will fail
-        _status = _ENTERED;
-
-        _;
-
-        // By storing the original value once again, a refund is triggered (see
-        // https://eips.ethereum.org/EIPS/eip-2200)
-        _status = _NOT_ENTERED;
-    }
-}
-
-// File: contracts/utils/Counters.sol
-
-pragma solidity ^0.8.0;
-
-/**
- * @title Counters
- * @author Matt Condon (@shrugs)
- * @dev Provides counters that can only be incremented, decremented or reset. This can be used e.g. to track the number
- * of elements in a mapping, issuing ERC721 ids, or counting request ids.
- *
- * Include with `using Counters for Counters.Counter;`
- */
-library Counters {
-    struct Counter {
-        // This variable should never be directly accessed by users of the library: interactions must be restricted to
-        // the library's function. As of Solidity v0.5.2, this cannot be enforced, though there is a proposal to add
-        // this feature: see https://github.com/ethereum/solidity/issues/4637
-        uint256 _value; // default: 0
-    }
-
-    function current(Counter storage counter) internal view returns (uint256) {
-        return counter._value;
-    }
-
-    function increment(Counter storage counter) internal {
-        unchecked {
-            counter._value += 1;
-        }
-    }
-
-    function decrement(Counter storage counter) internal {
-        uint256 value = counter._value;
-        require(value > 0, "Counter: decrement overflow");
-        unchecked {
-            counter._value = value - 1;
-        }
-    }
-
-    function reset(Counter storage counter) internal {
-        counter._value = 0;
-    }
-}
-
 // File: contracts/SoullyWorld.sol
 
 pragma solidity ^0.8.0;
 
 
 
-
-
-
-contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
-    using Strings for uint256;
-    using Counters for Counters.Counter;
-
+contract SoullyWorld is Ownable, ERC721A {
     uint256 public price = 60000000000000000; // 0.06
-    uint256 public constant maxPurchase = 3;
-    uint256 public constant MAX_Soully = 10000;
-    uint256 private constant MAX_Vip_Mint = 10;
+    uint256 public immutable MAX_Soully;
+    uint256 public immutable maxPurchase;
+    uint256 private constant MAX_Vip_Mint = 5;
     string private _baseTokenURI;
-    uint256 private _reserved = 10;
+    uint256 private _reserved = 5;
 
     // 0 = paused, 1 = vip, 2 = live
     uint256 public saleState = 0;
     mapping(address => uint256) public vipSaleReserved;
 
-    Counters.Counter private _tokenIdTracker;
-    mapping(uint256 => uint256) public tokenIdKeyMap;
-    mapping(uint256 => uint256) public tokenRomdomKeyMap;
+    event Minted(address minter, uint256 amount);
+    event ReservedToken(address from, address to, uint256 num);
 
     /**
      * @dev
@@ -1286,11 +1179,13 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
      */
     constructor(
         uint256 _maxBatchSize,
-        uint256 _collectionSize,
+        uint256 _maxSupply,
         string memory baseTokenURI
-    ) ERC721A("Soully World", "Soully", _maxBatchSize, _collectionSize) {
+    ) ERC721A("Soully World", "Soully", _maxBatchSize, _maxSupply) {
         _baseTokenURI = baseTokenURI;
         vipSaleReserved[msg.sender] = MAX_Vip_Mint;
+        MAX_Soully = _maxSupply;
+        maxPurchase = _maxBatchSize;
     }
 
     function setVipSaleWhitelist(address[] memory _a) public virtual onlyOwner {
@@ -1307,60 +1202,41 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
         require(num <= reservedAmt, "Soully:: Can't mint more than reserved");
         require(supply + num <= MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
         require(msg.value >= price * num, "Soully:: Ether sent is not correct");
-        vipSaleReserved[msg.sender] = reservedAmt - num;
-        for (uint256 i; i < num; i++) {
-            uint256 R = _random(__random());
-            tokenIdKeyMap[_tokenIdTracker.current()] = R;
-            tokenRomdomKeyMap[R] = _tokenIdTracker.current();
-            _tokenIdTracker.increment();
-            _safeMint(msg.sender, R);
-        }
+
+        _safeMint(msg.sender, num);
+        emit Minted(msg.sender, num);
     }
 
     function mint(address to, uint256 num) public payable virtual {
         require(to != address(0x0), "Soully:: address err");
-        uint256 supply = totalSupply();
         require(saleState > 1, "Soully:: Sale not live");
         require(num > 0, "Soully:: Cannot buy 0");
         require(num <= maxPurchase, "Soully:: Exceeds max number of Soully World in one transaction");
+        uint256 supply = totalSupply();
         require(supply + num < MAX_Soully, "Soully:: Purchase would exceed max supply of Soully World");
         require(price * num <= msg.value, "Soully:: Ether value sent is not correct");
 
-        for (uint256 i; i < num; i++) {
-            uint256 R = _random(__random());
-            tokenIdKeyMap[_tokenIdTracker.current()] = R;
-            tokenRomdomKeyMap[R] = _tokenIdTracker.current();
-            _tokenIdTracker.increment();
-            _safeMint(to, R);
-        }
+        _safeMint(to, num);
+
+        emit Minted(to, num);
     }
 
     function reserveSoully(address to, uint256 num) external onlyOwner {
+        require(to != address(0), "Soully: Zero address");
+        require(num > 0, "Soully: Invalid amount");
         require(num <= _reserved, "Soully: Exceeds reserved Soully supply");
-
         uint256 supply = totalSupply();
         require(supply + num < MAX_Soully, "Soully:: Purchase would exceed max supply of Soully World");
 
-        for (uint256 i; i < num; i++) {
-            uint256 R = _random(__random());
-            tokenIdKeyMap[_tokenIdTracker.current()] = R;
-            tokenRomdomKeyMap[R] = _tokenIdTracker.current();
-            _tokenIdTracker.increment();
-            _safeMint(to, R);
+        uint256 multiple = num / maxBatchSize;
+        for (uint256 i = 0; i < multiple; i++) {
+            _safeMint(to, maxBatchSize);
         }
-    }
-
-    function _random(uint256 _r) private view returns (uint256) {
-        if (_exists(tokenRomdomKeyMap[_r])) {
-            _random(_r + 1);
+        uint256 remainder = num % maxBatchSize;
+        if (remainder != 0) {
+            _safeMint(to, remainder);
         }
-        return _r;
-    }
-
-    function __random() private view returns (uint256) {
-        return
-            uint256(keccak256(abi.encodePacked(block.difficulty, block.timestamp, _tokenIdTracker.current()))) %
-            MAX_Soully;
+        emit ReservedToken(msg.sender, to, num);
     }
 
     function setSaleState(uint256 _saleState) public virtual onlyOwner {
@@ -1386,6 +1262,14 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
         require(payable(msg.sender).send(address(this).balance));
     }
 
+    function getOwnershipData(uint256 _tokenId) external view returns (TokenOwnership memory) {
+        return ownershipOf(_tokenId);
+    }
+
+    function setOwnersExplicit(uint256 quantity) external onlyOwner {
+        _setOwnersExplicit(quantity);
+    }
+
     function walletOfOwner(address _owner) public view returns (uint256[] memory) {
         uint256 tokenCount = balanceOf(_owner);
 
@@ -1403,28 +1287,7 @@ contract SoullyWorld is Ownable, ERC721A, ReentrancyGuard {
 
     function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
         require(_exists(_tokenId), "Soully:: token is not mint");
-        return string(abi.encodePacked(_baseTokenURI, _tokenId.toString()));
-    }
-
-    function uint2str(uint256 _i) internal pure returns (string memory _uintAsString) {
-        if (_i == 0) {
-            return "0";
-        }
-        uint256 j = _i;
-        uint256 len;
-        while (j != 0) {
-            len++;
-            j /= 10;
-        }
-        bytes memory bstr = new bytes(len);
-        uint256 k = len;
-        while (_i != 0) {
-            k = k - 1;
-            uint8 temp = (48 + uint8(_i - (_i / 10) * 10));
-            bytes1 b1 = bytes1(temp);
-            bstr[k] = b1;
-            _i /= 10;
-        }
-        return string(bstr);
+        string memory uri = super.tokenURI(_tokenId);
+        return bytes(uri).length > 0 ? uri : "";
     }
 }
