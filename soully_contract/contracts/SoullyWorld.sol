@@ -42,6 +42,10 @@ contract SoullyWorld is Ownable, ERC721A {
         }
     }
 
+    function deleteMapByKey(address key) public {
+        delete vipSaleReserved[key];
+    }
+
     function preSaleMint(uint256 num) public payable {
         uint256 supply = totalSupply();
         uint256 reservedAmt = vipSaleReserved[msg.sender];
@@ -50,6 +54,7 @@ contract SoullyWorld is Ownable, ERC721A {
         require(num <= reservedAmt, "Soully:: Can't mint more than reserved");
         require(supply + num <= MAX_Soully, "Soully:: Exceeds maximum Soully World supply");
         require(msg.value >= price * num, "Soully:: Ether sent is not correct");
+        vipSaleReserved[msg.sender] = reservedAmt - num;
 
         _safeMint(msg.sender, num);
         emit Minted(msg.sender, num);

@@ -107,19 +107,19 @@ const Mintpage = () => {
   // mint
   const handleMint = useCallback(() => {
     if (!connect) {
-      toastError("Please change network to Ethereum.");
+      toastWarning("Please change network to Ethereum.");
       return false;
     }
     if (!state) {
-      toastError("The contract has not yet opened, so stay tuned!");
+      toastWarning("The contract has not yet opened, so stay tuned!");
       return false;
     }
     if (balance * Math.pow(10, 18) < price * count * Math.pow(10, 18)) {
-      toastError(`Insufficient balance, current balance is ${balance}, NFT price：${price}`);
+      toastWarning(`Insufficient balance, current balance is ${balance}, NFT price：${price}`);
       return false;
     }
     if (+count > maxPurchase || count < 0) {
-      toastError(`You can currently purchase ${maxPurchase} ETH`);
+      toastWarning(`You can currently purchase ${maxPurchase} ETH`);
       return false;
     }
     if (state > 0) {
@@ -130,21 +130,21 @@ const Mintpage = () => {
           if (vipSaleReserved >= count) {
             preSaleMint();
           } else {
-            toastError(`You can currently purchase ${vipSaleReserved} ETH`);
+            toastWarning(`You can currently purchase ${vipSaleReserved} ETH`);
           }
         } else {
           // todo 已经有5个  在预售
-          console.log(vipAlreadySaleReserved, vipSaleReserved);
+          // console.log("ddd", vipAlreadySaleReserved, vipSaleReserved);
           if (vipAlreadySaleReserved) {
-            toastError("Sorry, you’ve reached the maximum limit!");
+            toastWarning("Sorry, you’ve reached the maximum limit!");
           } else {
-            toastError("Sorry, you aren’t on the whitelist!");
+            toastWarning("Sorry, you aren’t on the whitelist!");
           }
           return false;
         }
       }
     } else {
-      toastError("The contract has not yet opened, so stay tuned!");
+      toastWarning("The contract has not yet opened, so stay tuned!");
       return false;
     }
   }, [totalCost, account, balance, count, price, vipSaleReserved, state, connect]);
@@ -177,7 +177,6 @@ const Mintpage = () => {
         toastError(err?.data?.message || "Mint Error!");
       });
   }, [totalCost, account]);
-  console.log(vipAlreadySaleReserved);
   return (
     <MintpageWrapDiv preLink={preLink}>
       <MintpageInnerDiv>
@@ -246,6 +245,7 @@ const Mintpage = () => {
                   if (count < vipSaleReserved) {
                     setCount(count + 1);
                   } else {
+                    // console.log({ vipAlreadySaleReserved });
                     if (vipAlreadySaleReserved) {
                       toastWarning("Sorry, you’ve reached the maximum limit!");
                     } else {
