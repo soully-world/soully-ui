@@ -52,8 +52,27 @@ const Mintpage = () => {
       }
     });
     // 状态
-    contract.saleState().then((_state: BN) => {
+    contract?.saleState().then((_state: BN) => {
       setState(_state.toNumber());
+
+      contract.vipSaleReserved(account).then((reserved: BN) => {
+        // vip用户能够领取多少个
+        setVipSaleReserved(reserved.toNumber());
+        // 如果可领取数为 < maxPurchase
+        if (reserved.toNumber() < maxPurchase) {
+          setCount(reserved.toNumber());
+        }
+
+        contract?.walletOfOwner(account).then((data: BN[]) => {
+          if (data && data.length) {
+            if (_state.toNumber() === 1) {
+              setCount(reserved.toNumber() - data.length);
+              setVipSaleReserved(reserved.toNumber() - data.length);
+            }
+            setVipAlreadySaleReserved(data.length);
+          }
+        });
+      });
     });
 
     // 单独取会有问题，所以在回调里
@@ -62,19 +81,6 @@ const Mintpage = () => {
       setPrice(Number(formatUnits(_price)));
     });
 
-    contract?.vipSaleReserved(account).then((reserved: BN) => {
-      // vip用户能够领取多少个
-      setVipSaleReserved(reserved.toNumber());
-      // 如果可领取数为 < maxPurchase
-      if (reserved.toNumber() < maxPurchase) {
-        setCount(reserved.toNumber());
-      }
-    });
-    contract?.walletOfOwner(account).then((data: BN[]) => {
-      if (data && data.length) {
-        setVipAlreadySaleReserved(data.length);
-      }
-    });
     // contract?.maxPurchase().then((_maxPurchase: BN) => {
     //   // 非vip单次能够领取个数
     //   setMaxPurchase(_maxPurchase.toNumber());
@@ -128,7 +134,8 @@ const Mintpage = () => {
           }
         } else {
           // todo 已经有5个  在预售
-          if (vipAlreadySaleReserved < vipSaleReserved) {
+          console.log(vipAlreadySaleReserved, vipSaleReserved);
+          if (vipAlreadySaleReserved) {
             toastError("Sorry, you’ve reached the maximum limit!");
           } else {
             toastError("Sorry, you aren’t on the whitelist!");
@@ -170,7 +177,7 @@ const Mintpage = () => {
         toastError(err?.data?.message || "Mint Error!");
       });
   }, [totalCost, account]);
-  // console.log(connect);
+  console.log(vipAlreadySaleReserved);
   return (
     <MintpageWrapDiv preLink={preLink}>
       <MintpageInnerDiv>
@@ -239,7 +246,7 @@ const Mintpage = () => {
                   if (count < vipSaleReserved) {
                     setCount(count + 1);
                   } else {
-                    if (vipAlreadySaleReserved < vipSaleReserved) {
+                    if (vipAlreadySaleReserved) {
                       toastWarning("Sorry, you’ve reached the maximum limit!");
                     } else {
                       toastWarning("Sorry, you aren’t on the whitelist!");
