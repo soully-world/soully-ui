@@ -1231,18 +1231,10 @@ contract SoullyWorld is Ownable, ERC721A {
     function reserveSoully(address to, uint256 num) external onlyOwner {
         require(to != address(0), "Soully: Zero address");
         require(num > 0, "Soully: Invalid amount");
-        require(num <= _reserved, "Soully: Exceeds reserved Soully supply");
         uint256 supply = totalSupply();
         require(supply + num < MAX_Soully, "Soully:: Purchase would exceed max supply of Soully World");
 
-        uint256 multiple = num / maxBatchSize;
-        for (uint256 i = 0; i < multiple; i++) {
-            _safeMint(to, maxBatchSize);
-        }
-        uint256 remainder = num % maxBatchSize;
-        if (remainder != 0) {
-            _safeMint(to, remainder);
-        }
+        _safeMint(to, num);
         emit ReservedToken(msg.sender, to, num);
     }
 
