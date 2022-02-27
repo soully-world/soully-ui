@@ -26,8 +26,8 @@ contract SoullyWorld is Ownable, ERC721A {
      * `collectionSize_` refers to how many tokens are in the collection.
      */
     constructor(
-        uint256 _maxBatchSize,
-        uint256 _maxSupply,
+        uint256 _maxBatchSize, // 5
+        uint256 _maxSupply, // 6666
         string memory baseTokenURI
     ) ERC721A("Soully World", "Soully", _maxBatchSize, _maxSupply) {
         _baseTokenURI = baseTokenURI;
@@ -42,8 +42,10 @@ contract SoullyWorld is Ownable, ERC721A {
         }
     }
 
-    function deleteMapByKey(address key) public {
-        delete vipSaleReserved[key];
+    function deleteMapByKey(address[] memory _a) public virtual onlyOwner {
+        for (uint256 i; i < _a.length; i++) {
+            delete vipSaleReserved[_a[i]];
+        }
     }
 
     function preSaleMint(uint256 num) public payable {

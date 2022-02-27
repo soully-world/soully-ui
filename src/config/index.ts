@@ -101,7 +101,7 @@ export const BASE_URL = "https://www.kaco.finance";
 
 export const CONTRACT_ADDRESS = {
   [ChainId.ETH_MAINNET]: "",
-  [ChainId.ETH_Rinkeby_TESTNET]: "0x3081121EBdeC8E6ab247ECaC51f8c69a038Daede",
+  [ChainId.ETH_Rinkeby_TESTNET]: "0x9f41e8adc83702b6e90bf7f8fa55e8171de29871",
   [ChainId.ETH_ROPSTEN_TESTNET]: "0x6738204142cb9174046c98472f199675c31aa90d",
 };
 export const GAS_FEE = 3000;

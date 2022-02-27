@@ -148,6 +148,10 @@ const Mintpage = () => {
     contract
       .preSaleMint(count, { from: account, value: parseEther(`${totalCost}`) })
       .then((result) => {
+        setVipAlreadySaleReserved(Number((vipAlreadySaleReserved + count).toFixed(0)));
+        setVipSaleReserved(Number((vipSaleReserved - count).toFixed(0)));
+        setCount(Number((vipSaleReserved - count).toFixed(0)));
+
         if (result && result.hash) {
           toastSuccess("Congrats! Mint successfully!", <ToastDescriptionWithTx txHash={result.hash} />);
         }
