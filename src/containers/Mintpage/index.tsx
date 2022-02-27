@@ -145,7 +145,9 @@ const Mintpage = () => {
     contract
       .preSaleMint(count, { from: account, value: parseEther(`${totalCost}`) })
       .then((result) => {
-        toastSuccess("Congrats! Mint successfully!", <ToastDescriptionWithTx txHash={result} />);
+        if (result) {
+          toastSuccess("Congrats! Mint successfully!", <ToastDescriptionWithTx txHash={result} />);
+        }
       })
       .catch((err) => {
         toastError(err?.data?.message || "Mint Error!");
