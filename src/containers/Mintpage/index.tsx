@@ -128,7 +128,7 @@ const Mintpage = () => {
           }
         } else {
           // todo 已经有5个  在预售
-          if (vipAlreadySaleReserved > vipSaleReserved) {
+          if (vipAlreadySaleReserved < vipSaleReserved) {
             toastError("Sorry, you’ve reached the maximum limit!");
           } else {
             toastError("Sorry, you aren’t on the whitelist!");
@@ -237,7 +237,7 @@ const Mintpage = () => {
                   if (count < vipSaleReserved) {
                     setCount(count + 1);
                   } else {
-                    if (vipAlreadySaleReserved > vipSaleReserved) {
+                    if (vipAlreadySaleReserved < vipSaleReserved) {
                       toastWarning("Sorry, you’ve reached the maximum limit!");
                     } else {
                       toastWarning("Sorry, you aren’t on the whitelist!");
