@@ -9,7 +9,7 @@ const partnersArr = [
     image: "01.png",
   },
   {
-    name: "@AlphaSharkClub",
+    name: "@0xXiaozhu",
     image: "02.png",
   },
   {
