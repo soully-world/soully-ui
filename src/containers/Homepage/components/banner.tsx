@@ -1,15 +1,15 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useMatchBreakpoints } from "uikit";
+import { useMatchBreakpoints, Flex, Button } from "uikit";
 import { preLink } from "appConfig";
 import {
   BannerWrapDiv,
-  IframeWrap,
-  // BannerBtn,
-  // BannerContextText,
-  // BannerInnerDiv,
-  // BannerTitle,
-  // BannerSubTitle,
+  // IframeWrap,
+  BannerBtn,
+  BannerContextText,
+  BannerInnerDiv,
+  BannerTitle,
+  BannerSubTitle,
 } from "./bannerStyle";
 
 const Banner = memo(() => {
@@ -48,7 +48,7 @@ const Banner = memo(() => {
   }, [isLoad.current]);
   return (
     <BannerWrapDiv preLink={preLink} id="Home">
-      {showMp4 ? (
+      {/* {showMp4 ? (
         <div className="videoWrap">
           <video
             muted
@@ -74,9 +74,8 @@ const Banner = memo(() => {
           src="https://www.youtube.com/embed/mXgoJhJV-fg?color=white&mute=1&autoplay=1&controls=0&enablejsapi=1&loop=1&rel=0&playlist=mXgoJhJV-fg&origin=https://www.soully.world/"
           frameBorder="0"
         ></iframe>
-      </IframeWrap>
+      </IframeWrap> */}
 
-      {/*
       <BannerInnerDiv>
         <Flex flex={1} flexDirection="column">
           <BannerTitle>Soully World</BannerTitle>
@@ -105,7 +104,7 @@ const Banner = memo(() => {
             Join Our Discord
           </Button>
         </BannerBtn>
-      </BannerInnerDiv> */}
+      </BannerInnerDiv>
     </BannerWrapDiv>
   );
 });

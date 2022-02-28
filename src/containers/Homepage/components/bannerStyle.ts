@@ -13,21 +13,21 @@ export const IframeWrap = styled.div`
   }
 `;
 export const BannerWrapDiv = styled.div<{ preLink: string }>`
-  // background: url("${({ preLink }) => preLink}/images/banner/bg.png");
+  background: url("${({ preLink }) => preLink}/images/banner/bg.png");
   background-repeat: no-repeat;
-  // background-size: 3355px 1440px;
-  // background-position: center top;
-  // padding-top: 100px;
-  // padding-bottom: 100px;
+  background-size: 3355px 1440px;
+  background-position: center top;
+  padding-top: 100px;
+  padding-bottom: 140px;
   position: relative;
   overflow: hidden;
 
   ${({ theme }) => theme.mediaQueries.md} {
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
-    // padding-top: 240px;
+    padding-top: 240px;
     background-size: 2560px 1100px;
-    // padding-bottom: 300px;
+    padding-bottom: 300px;
   }
   .videoWrap {
     position: absolute;
