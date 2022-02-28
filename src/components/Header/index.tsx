@@ -245,7 +245,7 @@ export default class HeaderWidget extends React.Component<IProps, IState> {
         window.location.href = `/#${_key.replaceAll(" ", "")}`;
         break;
       case "Mint":
-        window.location.href = "/get";
+        window.location.href = "/mint";
         break;
       default:
         window.scrollTo(0, 0);

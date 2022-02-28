@@ -35,7 +35,7 @@ const App = (): JSX.Element => {
             <Route exact path={preLink + "/"}>
               <Homepage />
             </Route>
-            <Route exact path={preLink + "/get"}>
+            <Route exact path={preLink + "/mint"}>
               <MintPage />
             </Route>
             <Route exact path={preLink + "/Kriyan-Soully"}>

@@ -88,7 +88,7 @@ contract SoullyWorld is Ownable, ERC721A {
 
     function setSaleState(uint256 _saleState) public virtual onlyOwner {
         require(_saleState >= 0, "Soully:: Sale state cannot < 0");
-        require(_saleState < 2, "Soully:: Sale state cannot > 1");
+        require(_saleState <= 2, "Soully:: Sale state cannot > 2");
         saleState = _saleState;
     }
 
