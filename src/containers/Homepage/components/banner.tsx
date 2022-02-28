@@ -91,7 +91,7 @@ const Banner = memo(() => {
             variant="primary"
             className="primary"
             onClick={() => {
-              window.location.href = "/get";
+              window.location.href = "/mint";
             }}
           >
             <em>Mint a Soully</em>
