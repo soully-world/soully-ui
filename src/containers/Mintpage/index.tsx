@@ -34,8 +34,8 @@ const Mintpage = () => {
   const [state, setState] = useState<CONTRACT_STATE>(CONTRACT_STATE.paused);
   const [maxPurchase] = useState<number>(5);
   const [total, setTotal] = useState<number>(0);
-  const [price, setPrice] = useState<number>(0.06);
-  const [totalCost, setTotalCost] = useState(0.06);
+  const [price, setPrice] = useState<number>(0.07);
+  const [totalCost, setTotalCost] = useState(0.07);
   const [count, setCount] = useState<number>(5); // 要mint的个数
   const { account, chainId } = useWeb3React();
   const [connect, setConnect] = useState(false);
