@@ -211,7 +211,7 @@ const Mintpage = () => {
               <i>{totalCost.toFixed(2)} </i>ETH
             </h3>
           </CostStyled>
-          <h5>QTY YOU CAN MINT: {count}</h5>
+          <h5>MINT QTY: {count}</h5>
           <MintpageBtn>
             <i
               onClick={() => {
