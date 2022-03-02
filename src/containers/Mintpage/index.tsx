@@ -56,12 +56,12 @@ const Mintpage = () => {
       setState(_state.toNumber());
 
       contract.vipSaleReserved(account).then((reserved: BN) => {
-        // vip用户能够领取多少个
-        setVipSaleReserved(reserved.toNumber());
-        // 如果可领取数为 < maxPurchase
-        if (reserved.toNumber() < maxPurchase) {
-          setCount(reserved.toNumber());
-        }
+        // // vip用户能够领取多少个
+        // setVipSaleReserved(reserved.toNumber());
+        // // 如果可领取数为 < maxPurchase
+        // if (reserved.toNumber() < maxPurchase) {
+        //   setCount(reserved.toNumber());
+        // }
 
         contract?.walletOfOwner(account).then((data: BN[]) => {
           if (data && data.length) {
