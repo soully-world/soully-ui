@@ -81,7 +81,7 @@ const Banner = memo(() => {
           <BannerTitle>Soully World</BannerTitle>
           <BannerSubTitle>Who Need Protector</BannerSubTitle>
           <BannerContextText>
-            Soully World is an NFT open-world made up of 10,000 completely original characters and a separate story of
+            Soully World is an NFT open-world made up of 666 completely original characters and a separate story of
             overhead history.
           </BannerContextText>
         </Flex>
